@@ -7,6 +7,7 @@ setup(name='UserGrid',
     description='UserGrid 1.x Client',
     author='Christopher Smith',
     author_email='chris.s@bigmirrorlabs.com',
-    packages=['usergrid'],
+    packages=[''],
+    package_dir={'':'usergrid'},
     include_package_data = True
 )
