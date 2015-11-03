@@ -7,5 +7,5 @@ setup(name='UserGrid',
     description='UserGrid 1.x Client',
     author='Christopher Smith',
     author_email='chris.s@bigmirrorlabs.com',
-    py_modules=['usergrid']
+    py_modules=['usergrid/usergrid']
 )
