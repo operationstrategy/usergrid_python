@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+__version__='0.1'
+
 import requests
 import json
 import datetime
@@ -120,7 +122,7 @@ class UserGrid:
 
     def std_headers(self):
         headers = {}
-        headers['user-agent'] = 'python usergrid-interceptor'
+        headers['user-agent'] = 'python usergrid client v.{0}'.format(__version__)
         headers['Accept'] = 'application/json'
         headers['Authorization'] = "Bearer {0}".format(self.access_token)
         return headers
