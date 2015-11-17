@@ -1,6 +1,8 @@
+from __future__ import absolute_import
+from __future__ import print_function
 #!/usr/bin/python
 
-__version__='0.1'
+__version__='0.1.1'
 
 import requests
 import json
@@ -63,7 +65,7 @@ class UserGrid:
 
     def _debug(self, txt):
         if self.debug:
-            print "UG_client:" + str(txt)
+            print("UG_client:" + str(txt))
 
     def set_last_response(self, response):
         self.last_response = response
@@ -102,7 +104,7 @@ class UserGrid:
             if username:
                 data['username'] = self.username
             if superuser:
-                print "logging in as super user"
+                print("logging in as super user")
                 data['username'] = self.superuser
 
         self._debug("login: grant_type: " + self.grant_type)
@@ -191,18 +193,18 @@ class UserGrid:
             else:
                 return [[], None]
         except:
-            print "Exception"
+            print("Exception")
             traceback.print_exc(file=sys.stdout)
             if r:
-                print "Response text: {0}".format(r.text)
-                print "Response status: {0}".format(r.status_code)
+                print("Response text: {0}".format(r.text))
+                print("Response status: {0}".format(r.status_code))
             else:
-                print r
+                print(r)
 
-            print "endpoint: {0}".format(endpoint)
-            print "cursor: {0}".format(cursor)
-            print "ql: {0}".format(ql)
-            print "limit: {0}".format(limit)
+            print("endpoint: {0}".format(endpoint))
+            print("cursor: {0}".format(cursor))
+            print("ql: {0}".format(ql))
+            print("limit: {0}".format(limit))
             return [[], None]
 
     def get_entity(self, endpoint, ql=None):
@@ -219,7 +221,7 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in response.keys():
+        if 'error' in list(response.keys()):
             # better error handling here...
             return None
         return response
@@ -232,9 +234,9 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in response.keys():
+        if 'error' in list(response.keys()):
             # better error handling here...
-            print response['error_description']
+            print(response['error_description'])
             return None
         return response['entities'][0]
 
@@ -247,12 +249,12 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in response.keys():
+        if 'error' in list(response.keys()):
             # better error handling here...
-            print response['error_description']
-            print response
-            print "data:"
-            print data
+            print(response['error_description'])
+            print(response)
+            print("data:")
+            print(data)
             return None
         return response['entities'][0]
 
@@ -268,14 +270,14 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in response.keys():
+        if 'error' in list(response.keys()):
             # better error handling here...
             return None
         return response
 
     def get_connections(self, entity):
-        if 'metadata' in entity.keys() and 'connections' in entity[
-                'metadata'].keys():
+        if 'metadata' in list(entity.keys()) and 'connections' in list(entity[
+                'metadata'].keys()):
             return entity['metadata']['connections']
         return None
 
@@ -287,7 +289,7 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in response.keys():
+        if 'error' in list(response.keys()):
             # better error handling here...
             return None
         return response
@@ -308,7 +310,7 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in response.keys():
+        if 'error' in list(response.keys()):
             # better error handling here...
             return None
         return response
@@ -329,15 +331,15 @@ class UserGrid:
         return None
 
     def get_actor_from_user(self, user):
-        if 'name' not in user.keys():
+        if 'name' not in list(user.keys()):
             name = user['username']
         else:
             name = user['name']
-        if 'picture' not in user.keys():
+        if 'picture' not in list(user.keys()):
             picture = ''
         else:
             picture = user['picture']
-        if 'email' not in user.keys():
+        if 'email' not in list(user.keys()):
             email = ''
         else:
             email = user['email']
@@ -350,4 +352,4 @@ class UserGrid:
         return actor
 
     def print_user(self, user):
-        print "{0}\t{1}".format(user['username'], user['uuid'])
+        print("{0}\t{1}".format(user['username'], user['uuid']))
