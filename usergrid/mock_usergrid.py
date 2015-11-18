@@ -135,7 +135,7 @@ class MockUserGrid:
     # maybe should pass in uuid, as a failsafe, rather than rely on endpoint
     def update_entity(self, endpoint, data):
         old_data = expected_responses[endpoint]
-        for key in data.keys():
+        for key in list(data.keys()):
             old_data[key] = data[key]
         expected_responses[endpoint] = old_data
 
