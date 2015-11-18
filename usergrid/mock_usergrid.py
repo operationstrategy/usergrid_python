@@ -124,7 +124,7 @@ class MockUserGrid:
         return None
 
     def delete_entity(self, endpoint):
-        print "not yet implemented in mock"
+        print("not yet implemented in mock")
         pass
 
     def post_entity(self, endpoint, data):
@@ -148,17 +148,17 @@ class MockUserGrid:
         expected_responses[endpoint] = post_data
 
     def get_connections(self, entity):
-        print "Not yet implemented in mock"
+        print("Not yet implemented in mock")
         pass
 
 
     # seperate method since we don't need data...
     def post_relationship(self, endpoint):
-        print "Not yet implemented in mock"
+        print("Not yet implemented in mock")
         # would need to pull appart endpoint to look up things?!?!!
 
     def post_file(self, endpoint, filepath):
-        print "Not yet implemented in mock"
+        print("Not yet implemented in mock")
 
 # These are some collection-aware utility functions
     def get_actor(self, user_id=None):
