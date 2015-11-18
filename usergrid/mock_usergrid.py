@@ -18,7 +18,12 @@ import traceback
 
 
 class MockUserGrid:
-    expected_responses = {}
+    responses = {}
+    # Mapping of query to respones
+    # eg { '/channels/123456': { <channel data> },
+    #      '/stories/9999/has_intro/audioclips' : [{ <audioclip data> }]
+
+    # note in testing you need to be aware of what you expect to get back from UG so you put the right thing in
 
     me = None
 
@@ -95,57 +100,64 @@ class MockUserGrid:
             "ourpicks_channel": "sxm_default_ourpicks"
         }
 
-    def collect_entities(self, endpoint, ql=None, limit=None):
-        return expected_responses["{0}?ql={1}&limit={2}".format(endpoint, ql, limit)]
+    def add_response_by_key(self, key, data):
+        print("Adding: {0} -> {1}".format(key,data))
+        if not isinstance(data, list):
+            self.responses[key] = [data]
+        else:
+            self.responses[key] = data
+
+    def add_response(self, endpoint, ql=None, cursor=None, limit=None, data=None):
+        key = "{0}?ql={1}&limit={2}&cursor={3}".format(endpoint, ql, limit, cursor)
+        self.add_response_by_key(key, data)
+
+    def get_response_by_key(self, key):
+        if key in self.responses:
+            return self.responses[key]
+        else:
+            return None
+
+    def get_response(self, endpoint, ql=None, cursor=None, limit=None, data=None):
+        key = "{0}?ql={1}&limit={2}&cursor={3}".format(endpoint, ql, limit, cursor)
+        return self.get_response_by_key(key)
 
     def std_headers(self):
-        headers = {}
-        headers['user-agent'] = 'python usergrid client v.{0}'.format(__version__)
-        headers['Accept'] = 'application/json'
-        headers['Authorization'] = "Bearer {0}".format(self.access_token)
-        return headers
-
-    def process_entities(self, endpoint, method, ql=None, limit=None):
-        page_entities, cursor = self.collect_entities(endpoint, ql=ql, limit=limit)
-        # process these entities
-        for entity in page_entities:
-            method(entity)
-        # changed get_entities to collect_entities so mock doesn't have to deal with cursors
-
-    def get_entities(self, endpoint, cursor=None, ql=None, limit=None):
-        return [expected_responses["{0}?ql={1}&limit={2}&cursor={3}".format(endpoint, ql, limit, cursor)], cursor + 1]
-        # here we are assuming cursor is mocked as just an integer
-
-    def get_entity(self, endpoint, ql=None):
-        entities, cursor = self.get_entities(endpoint, ql=ql)
-        if entities:
-            entity = entities[0]
-            return entity
         return None
 
+    def process_entities(self, endpoint, method, ql=None, limit=None):
+        all_entities = self.collect_entities(endpoint, ql=ql, limit=limit)
+        # process these entities
+        for entity in all_entities:
+            method(entity)
+
+    def collect_entities(self, endpoint, ql=None, limit=None):
+        return self.get_response(endpoint, ql=ql, limit=limit)
+
+    def get_entities(self, endpoint, cursor=None, ql=None, limit=None):
+        if not limit:
+            limit = 10
+        response = self.get_response(endpoint, ql=ql, limit=limit, cursor=cursor)
+        return response[0:limit]
+
+    def get_entity(self, endpoint, ql=None):
+        response = self.get_response(endpoint, ql=ql)
+        return response[0]
+
     def delete_entity(self, endpoint):
-        print("not yet implemented in mock")
-        pass
+        print("Not yet implemented")
+        return None
 
     def post_entity(self, endpoint, data):
-        data['uuid'] = uuid.uuid1
-        expected_responses[endpoint] = data
-        return data
+        print("Not yet implemented")
+        return None
 
     # maybe should pass in uuid, as a failsafe, rather than rely on endpoint
     def update_entity(self, endpoint, data):
-        old_data = expected_responses[endpoint]
-        for key in list(data.keys()):
-            old_data[key] = data[key]
-        expected_responses[endpoint] = old_data
+        print("Not yet implemented")
 
     # ? Should this autocreate /users/me/activities
     def post_activity(self, endpoint, actor, verb, content, data=None):
-        post_data = {"actor": actor, "verb": verb, "content": content}
-        if data:
-            post_data.update(data)
-        post_data['uuid'] = uuid.uuid1
-        expected_responses[endpoint] = post_data
+        print("Not yet implemented")
 
     def get_connections(self, entity):
         print("Not yet implemented in mock")
@@ -154,8 +166,7 @@ class MockUserGrid:
 
     # seperate method since we don't need data...
     def post_relationship(self, endpoint):
-        print("Not yet implemented in mock")
-        # would need to pull appart endpoint to look up things?!?!!
+        return self.get_entity(endpoint)
 
     def post_file(self, endpoint, filepath):
         print("Not yet implemented in mock")
