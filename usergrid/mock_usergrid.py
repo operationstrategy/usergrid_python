@@ -126,12 +126,16 @@ class MockUserGrid:
 
     def process_entities(self, endpoint, method, ql=None, limit=None):
         all_entities = self.collect_entities(endpoint, ql=ql, limit=limit)
+        if limit and limit < len(all_entities):
+            all_entities = all_entities[0:limit]
         # process these entities
         for entity in all_entities:
             method(entity)
 
     def collect_entities(self, endpoint, ql=None, limit=None):
-        return self.get_response(endpoint, ql=ql, limit=limit)
+        entities = self.get_response(endpoint, ql=ql, limit=limit)
+        if limit and limit < len(entities):
+            entities = entities[0:limit]
 
     def get_entities(self, endpoint, cursor=None, ql=None, limit=None):
         if not limit:
