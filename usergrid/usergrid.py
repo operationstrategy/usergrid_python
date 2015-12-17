@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from __future__ import print_function
 #!/usr/bin/python
 
-__version__='0.1.1'
+__version__='0.1.2'
 
 import requests
 import json
@@ -31,6 +31,9 @@ class UserGrid:
     access_token = None
     current_user = None
 
+    autoreconnect = True
+    last_login_info = {}
+
     me = None
 
     last_response = None
@@ -44,7 +47,8 @@ class UserGrid:
             app=None,
             client_id=None,
             client_secret=None,
-            debug=False):
+            debug=False,
+            autoreconnect=True):
         if host:
             self.host = host
         if port:
@@ -57,6 +61,7 @@ class UserGrid:
             self.client_id = client_id
         if client_secret:
             self.client_secret = client_secret
+        self.autoreconnect = autoreconnect
         self.app_endpoint = "http://{0}:{1}/{2}/{3}".format(
             self.host, self.port, self.org, self.app)
         self.management_endpoint = "http://{0}:{1}/management".format(
@@ -70,25 +75,34 @@ class UserGrid:
     def set_last_response(self, response):
         self.last_response = response
 
+    def reconnect(self):
+        self.login(**self.last_login_info)
+
     def login(
             self,
             superuser=None,
             username=None,
             password=None,
             client_id=None,
-            client_secret=None):
+            client_secret=None,
+            ttl=None):
         endpoint = self.app_endpoint
         if client_id:
             self.client_id = client_id
+            self.last_login_info['client_id'] = client_id
         if client_secret:
             self.client_secret = client_secret
+            self.last_login_info['client_secret'] = client_secret
         if username:
             self.username = username
+            self.last_login_info['username'] = username
         if superuser:
             self.superuser = superuser
             endpoint = self.management_endpoint
+            self.last_login_info['superuser'] = superuser
         if password:
             self.password = password
+            self.last_login_info['password'] = password
         # login as super user
         data = {}
         if not username and not superuser:
@@ -106,6 +120,9 @@ class UserGrid:
             if superuser:
                 print("logging in as super user")
                 data['username'] = self.superuser
+        if ttl:
+            data['ttl'] = ttl
+            self.last_login_info['ttl'] = ttl
 
         self._debug("login: grant_type: " + self.grant_type)
         self._debug("login: data: " + str(data))
@@ -180,6 +197,19 @@ class UserGrid:
             # print r.text.encode('utf-8')
             r.raise_for_status
             response = r.json()
+            self._debug(response)
+            if 'exception' in response:
+                # check for expired_token and autoreconnect
+                if 'expired_token' in response['error'] and self.autoreconnect:
+                    self.reconnect()
+                    r = requests.get(
+                            self.get_full_endpoint(endpoint),
+                            headers=self.std_headers())
+                    self.set_last_response(r)
+                    r.raise_for_status
+                    response = r.json()
+                else:
+                    return [[], None] # TODO: RAISE EXCEPTION
             if 'entities' in response or 'list' in response:
                 if 'entities' in response:
                     entities = response['entities']
