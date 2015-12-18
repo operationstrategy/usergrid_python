@@ -31,7 +31,7 @@ class UserGrid:
     access_token = None
     current_user = None
 
-    autoreconnect = True
+    autoreconnect = False
     last_login_info = {}
 
     me = None
@@ -48,7 +48,7 @@ class UserGrid:
             client_id=None,
             client_secret=None,
             debug=False,
-            autoreconnect=True):
+            autoreconnect=False):
         if host:
             self.host = host
         if port:
