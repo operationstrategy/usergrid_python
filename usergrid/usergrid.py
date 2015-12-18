@@ -200,7 +200,7 @@ class UserGrid:
             self._debug(response)
             if 'exception' in response:
                 # check for expired_token and autoreconnect
-                if 'expired_token' in response['error'] and self.autoreconnect:
+                if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
                     self.reconnect()
                     r = requests.get(
                             self.get_full_endpoint(endpoint),
@@ -209,6 +209,7 @@ class UserGrid:
                     r.raise_for_status
                     response = r.json()
                 else:
+                    print(response['error_description'])
                     return [[], None] # TODO: RAISE EXCEPTION
             if 'entities' in response or 'list' in response:
                 if 'entities' in response:
@@ -251,9 +252,19 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in list(response.keys()):
-            # better error handling here...
-            return None
+        if 'exception' in response:
+            # check for expired_token and autoreconnect
+            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
+                self.reconnect()
+                r = requests.delete(
+                        self.get_full_endpoint(endpoint),
+                        headers=self.std_headers())
+                self.set_last_response(r)
+                r.raise_for_status
+                response = r.json()
+            else:
+                print(response['error_description'])
+                return None # TODO : raise exception
         return response
 
     def post_entity(self, endpoint, data):
@@ -264,10 +275,19 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in list(response.keys()):
-            # better error handling here...
-            print(response['error_description'])
-            return None
+        if 'exception' in response:
+            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
+                self.reconnect()
+                r = requests.post(
+                        self.get_full_endpoint(endpoint),
+                        headers=self.std_headers(),
+                        data=json.dumps(data))
+                self.set_last_response(r)
+                r.raise_for_status
+                response = r.json()
+            else:
+                print(response['error_description'])
+                return None
         return response['entities'][0]
 
     # maybe should pass in uuid, as a failsafe, rather than rely on endpoint
@@ -279,13 +299,19 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in list(response.keys()):
-            # better error handling here...
-            print(response['error_description'])
-            print(response)
-            print("data:")
-            print(data)
-            return None
+        if 'exception' in response:
+            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
+                self.reconnect()
+                r = requests.put(
+                        self.get_full_endpoint(endpoint),
+                        headers=self.std_headers(),
+                        data=json.dumps(data))
+                self.set_last_response(r)
+                r.raise_for_status
+                response = r.json()
+            else:
+                print(response['error_description'])
+                return None
         return response['entities'][0]
 
     # ? Should this autocreate /users/me/activities
@@ -300,9 +326,19 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in list(response.keys()):
-            # better error handling here...
-            return None
+        if 'exception' in response:
+            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
+                self.reconnect()
+                r = requests.post(
+                        self.get_full_endpoint(endpoint),
+                        data=json.dumps(post_data),
+                        headers=self.std_headers())
+                self.set_last_response(r)
+                r.raise_for_status
+                response = r.json()
+            else:
+                print(response['error_description'])
+                return None
         return response
 
     def get_connections(self, entity):
@@ -319,9 +355,18 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in list(response.keys()):
-            # better error handling here...
-            return None
+        if 'exception' in response:
+            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
+                self.reconnect()
+                r = requests.post(
+                        self.get_full_endpoint(endpoint),
+                        headers=self.std_headers())
+                self.set_last_response(r)
+                r.raise_for_status
+                response = r.json()
+            else:
+                print(response['error_description'])
+                return None
         return response
 
     def post_file(self, endpoint, filepath):
@@ -340,9 +385,19 @@ class UserGrid:
         self.set_last_response(r)
         r.raise_for_status
         response = r.json()
-        if 'error' in list(response.keys()):
-            # better error handling here...
-            return None
+        if 'exception' in response:
+            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
+                self.reconnect()
+                r = requests.post(
+                        self.get_full_endpoint(endpoint),
+                        headers=headers,
+                        files=files)
+                self.set_last_response(r)
+                r.raise_for_status
+                response = r.json()
+            else:
+                print(response['error_description'])
+                return None
         return response
 
 # These are some collection-aware utility functions
