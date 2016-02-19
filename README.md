@@ -188,7 +188,7 @@ owner = ug.get_entity("/cars/eldorado/connecting/owns/users")
 
 This uploads a file to UserGrid and associates it with the given entity. UG will determine the content-type automatically. If there is a file attached to an entity, UserGrid will add this block to the entity:
 
-```json
+```python
 file-metadata: {
    content-length: Integer,
    content-type: String,
