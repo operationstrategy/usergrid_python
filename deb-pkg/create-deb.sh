@@ -16,7 +16,7 @@ fi
 set -u
 # echo uninit = $UNINIT
 
-APPNAME="audiotranscoder"
+APPNAME="usergrid_python"
 DEBFILENAME="$1"
 SRC=deb-pkg/new-package-source
 DIST=deb-pkg/new-package-dist
