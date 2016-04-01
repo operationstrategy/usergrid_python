@@ -1,0 +1,9 @@
+Package: usergrid_python
+Version: 1.0-1
+Section: base
+Priority: optional
+Architecture: amd64
+Installed-Size: SIZE
+Depends:
+Maintainer: Aaron Urbain <aaron.u@bigmirrorlabs.com>
+Description: usergrid_python is used by other pythong projects
