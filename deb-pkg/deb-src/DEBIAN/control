@@ -4,6 +4,6 @@ Section: base
 Priority: optional
 Architecture: amd64
 Installed-Size: SIZE
-Depends: python-setuptools
+Depends: python python-setuptools
 Maintainer: Aaron Urbain <aaron.u@bigmirrorlabs.com>
 Description: usergrid_python is used by other pythong projects
