@@ -71,7 +71,7 @@ fi
 
 echo copying in the app
 mkdir -p ${SYSROOT}/opt/orange/${APPNAME}/
-rsync -a *  --exclude 'deb-pkg' ${SYSROOT}/opt/orange/${APPNAME}/
+rsync -a *  --exclude '*.deb' --exclude 'deb-pkg' ${SYSROOT}/opt/orange/${APPNAME}/
 if [[ $rc != 0 ]]; then
   echo "FAIL: rsync of app"
   exit $rc;
