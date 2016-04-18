@@ -141,7 +141,7 @@ class MockUserGrid:
         if not limit:
             limit = 10
         response = self.get_response(endpoint, ql=ql, limit=limit, cursor=cursor)
-        return response[0:limit]
+        return (response[0:limit],"newcursor")
 
     def get_entity(self, endpoint, ql=None):
         response = self.get_response(endpoint, ql=ql)
