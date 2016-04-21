@@ -136,6 +136,7 @@ class MockUserGrid:
         entities = self.get_response(endpoint, ql=ql, limit=limit)
         if limit and limit < len(entities):
             entities = entities[0:limit]
+        return entities
 
     def get_entities(self, endpoint, cursor=None, ql=None, limit=None):
         if not limit:
