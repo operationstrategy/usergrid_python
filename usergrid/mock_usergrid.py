@@ -107,8 +107,12 @@ class MockUserGrid:
         else:
             self.responses[key] = data
 
+    def get_key(self, endpoint, ql="ql", cursor="cursor", limit="limit"):
+        key = "{0}.{1}.{2}".format(endpoint,ql,cursor)
+        return key
+
     def add_response(self, endpoint, ql=None, cursor=None, limit=None, data=None):
-        key = "{0}?ql={1}&limit={2}&cursor={3}".format(endpoint, ql, limit, cursor)
+        key = self.get_key(endpoint,ql=ql,cursor=cursor,limit=limit)
         self.add_response_by_key(key, data)
 
     def get_response_by_key(self, key):
@@ -118,7 +122,7 @@ class MockUserGrid:
             return None
 
     def get_response(self, endpoint, ql=None, cursor=None, limit=None, data=None):
-        key = "{0}?ql={1}&limit={2}&cursor={3}".format(endpoint, ql, limit, cursor)
+        key = self.get_key(endpoint, ql=ql, cursor=cursor, limit=limit)
         return self.get_response_by_key(key)
 
     def std_headers(self):
