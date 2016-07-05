@@ -376,7 +376,7 @@ class UserGrid:
 #	headers['Content-Type'] = 'application/x-www-form-urlencoded'
 #	headers['Content-Type'] = 'multipart/form-data'
 
-        files = {'file': open(filepath, 'r'), 'name': filename}
+        files = {'file': open(filepath, 'rb'), 'name': filename}
 
         r = requests.post(
             self.get_full_endpoint(endpoint),
