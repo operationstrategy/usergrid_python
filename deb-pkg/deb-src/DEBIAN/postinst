@@ -4,6 +4,7 @@ cd /opt/orange/usergrid_python/
 
 PWD=`pwd`
 echo current working dir is ${PWD}
+/usr/bin/python3 ./setup.py install
 /usr/bin/python ./setup.py install
 
 exit
