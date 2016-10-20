@@ -48,7 +48,8 @@ class UserGrid:
             client_id=None,
             client_secret=None,
             debug=False,
-            autoreconnect=False):
+            autoreconnect=False,
+            use_compression=True):
         if host:
             self.host = host
         if port:
@@ -61,6 +62,7 @@ class UserGrid:
             self.client_id = client_id
         if client_secret:
             self.client_secret = client_secret
+        self.use_compression = use_compression
         self.autoreconnect = autoreconnect
         self.app_endpoint = "http://{0}:{1}/{2}/{3}".format(
             self.host, self.port, self.org, self.app)
@@ -144,6 +146,8 @@ class UserGrid:
         headers['user-agent'] = 'python usergrid client v.{0}'.format(__version__)
         headers['Accept'] = 'application/json'
         headers['Authorization'] = "Bearer {0}".format(self.access_token)
+        if self.use_compression:
+            headers['Accept-Encoding'] = "gzip, deflate"
         return headers
 
     def get_full_endpoint(self, path):
