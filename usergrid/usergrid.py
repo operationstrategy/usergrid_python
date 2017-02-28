@@ -213,7 +213,8 @@ class UserGrid:
                     r.raise_for_status
                     response = r.json()
                 else:
-                    print(response['error_description'])
+                    # suppressing this message for now - happens way too often, mucks up the logs
+                    # print(response['error_description'])
                     return [[], None] # TODO: RAISE EXCEPTION
             if 'entities' in response or 'list' in response:
                 if 'entities' in response:
