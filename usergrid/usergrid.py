@@ -271,7 +271,7 @@ class UserGrid:
                 r.raise_for_status
                 response = r.json()
             else:
-                print(response['error_description'])
+                #print(response['error_description'])
                 return None # TODO : raise exception
         return response
 
