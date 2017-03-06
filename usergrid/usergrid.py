@@ -158,6 +158,8 @@ class UserGrid:
 
     def collect_entities(self, endpoint, ql=None, limit=None):
         entities = []
+        if not limit or limit < 1000:
+            limit = 1000
         page_entities, cursor = self.get_entities(endpoint, ql=ql, limit=limit)
         entities.extend(page_entities)
         count = len(page_entities)
