@@ -162,11 +162,13 @@ class UserGrid:
         entities.extend(page_entities)
         count = len(page_entities)
 
-        while cursor and (len(page_entities) > 0):
+        new_cursor = None
+        while cursor and (len(page_entities) > 0) and new_cursor != cursor:
             page_entities, cursor = self.get_entities(
                 endpoint, ql=ql, cursor=cursor, limit=limit)
             entities.extend(page_entities)
             count = count + len(page_entities)
+            new_cursor = cursor
 
         return entities
 
