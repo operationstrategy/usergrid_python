@@ -1,0 +1,43 @@
+{
+  "access_token": "YWMtJGZTFLL-Eeez0DlWaZ6xogAAAV9M6H5llIEZDHBrT7SAoLaugtwUeRAAaEE",
+  "expires_in": 604800,
+  "organization": {
+    "applications": {
+      "sxm/orange": "50dec060-2e6c-11e6-a58e-b9a51754978b"
+    },
+    "name": "sxm",
+    "passwordHistorySize": 0,
+    "properties": {},
+    "users": {
+      "michael.s@bigmirrorlabs.com": {
+        "activated": true,
+        "adminUser": true,
+        "applicationId": "00000000-0000-0000-0000-000000000001",
+        "confirmed": true,
+        "disabled": false,
+        "displayEmailAddress": "michael.s@bigmirrorlabs.com <michael.s@bigmirrorlabs.com>",
+        "email": "michael.s@bigmirrorlabs.com",
+        "htmldisplayEmailAddress": "michael.s@bigmirrorlabs.com &lt;<a href=\"mailto:michael.s@bigmirrorlabs.com\">michael.s@bigmirrorlabs.com</a>&gt;",
+        "name": "michael.s@bigmirrorlabs.com",
+        "properties": {},
+        "username": "michael.s@bigmirrorlabs.com",
+        "uuid": "295f4f5a-67f5-11e7-86e3-19768b6a9d93"
+      },
+      "superuser": {
+        "activated": true,
+        "adminUser": true,
+        "applicationId": "00000000-0000-0000-0000-000000000001",
+        "confirmed": true,
+        "disabled": false,
+        "displayEmailAddress": "Super User <chris.s@bigmirrorlabs.com>",
+        "email": "chris.s@bigmirrorlabs.com",
+        "htmldisplayEmailAddress": "Super User &lt;<a href=\"mailto:chris.s@bigmirrorlabs.com\">chris.s@bigmirrorlabs.com</a>&gt;",
+        "name": "Super User",
+        "properties": {},
+        "username": "superuser",
+        "uuid": "eeccd5ca-2cd0-11e6-924c-a9807629f9f8"
+      }
+    },
+    "uuid": "445a19ca-2e6c-11e6-b12d-1d0f065f7160"
+  }
+}

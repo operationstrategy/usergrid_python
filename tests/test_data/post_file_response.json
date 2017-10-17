@@ -1,0 +1,27 @@
+{
+  "action": "post",
+  "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+  "applicationName": "orange",
+  "duration": 389,
+  "entities": [
+    {
+      "created": 1508217636613,
+      "file-metadata": {
+        "content-length": 171903,
+        "content-type": "image/jpeg",
+        "last-modified": 1508217636959
+      },
+      "metadata": {
+        "path": "/tests/e83f735a-b2fa-11e7-81c4-3f93aaea7765"
+      },
+      "modified": 1508217636613,
+      "type": "test",
+      "uuid": "e83f735a-b2fa-11e7-81c4-3f93aaea7765"
+    }
+  ],
+  "organization": "sxm",
+  "params": {},
+  "path": "/tests",
+  "timestamp": 1508217636612,
+  "uri": "http://localhost:8080/sxm/orange/tests"
+}

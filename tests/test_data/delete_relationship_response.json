@@ -1,0 +1,46 @@
+{
+  "action": "delete",
+  "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+  "applicationName": "orange",
+  "duration": 31,
+  "entities": [
+    {
+      "uuid": "5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
+      "type": "user",
+      "name": "Demo 1",
+      "created": 1465580834427,
+      "modified": 1505314266781,
+      "username": "demo 1",
+      "email": "demo1@bigmirrorlabs.com",
+      "activated": true,
+      "picture": "8152cbba-9252-11e7-a509-fb9d5198852b",
+      "formId": "5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
+      "metadata": {
+        "collections": {
+          "activities": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/activities",
+          "devices": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/devices",
+          "feed": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/feed",
+          "followers": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/followers",
+          "following": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/following",
+          "groups": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/groups",
+          "roles": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles"
+        },
+        "connections": {
+          "curates": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/curates",
+          "profilepicture": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/profilepicture"
+        },
+        "path": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
+        "sets": {
+          "permissions": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/permissions",
+          "rolenames": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles"
+        }
+      },
+      "user-image": "https://s3.amazonaws.com/dev.orange.bigmirrorlabs.com/dev/images/8152cbba-9252-11e7-a509-fb9d5198852b/8152cbba-9252-11e7-a509-fb9d5198852b_2x.png"
+    }
+  ],
+  "organization": "sxm",
+  "params": {},
+  "path": "/tests/37c899ea-b2f3-11e7-ab63-3f1dd56a2e17/owns",
+  "timestamp": 1508216237837,
+  "uri": "http://localhost:8080/sxm/orange/tests/37c899ea-b2f3-11e7-ab63-3f1dd56a2e17/owns"
+}

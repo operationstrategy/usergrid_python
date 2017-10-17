@@ -1,0 +1,7 @@
+{
+    "duration": 0,
+    "error": "service_resource_not_found",
+    "error_description": "Service resource not found",
+    "exception": "org.apache.usergrid.services.exceptions.ServiceResourceNotFoundException",
+    "timestamp": 1508213664589
+}
