@@ -1,450 +1,589 @@
-from __future__ import absolute_import
-from __future__ import print_function
-#!/usr/bin/python
-
-__version__='0.1.3'
-
 import requests
 import json
-import datetime
-import calendar
+import logging
+import warnings
 import time
-import os
-import sys
-import traceback
 
-# TODO: need to include entity not exists errors, etc. - raise them when
-# problem occurs
+__version__ = '0.1.3'
+
+logger = logging.getLogger(__name__)
 
 
-class UserGrid:
-    org = "SXM"
-    app = "ORANGE"
-    host = "backend.bigmirrorlabs.com"
-    port = "80"
+class UserGrid(object):
+    _client_id = None
 
-    client_id = "b3U6zqN2esf9EeSpD1E1ffgwnQ"
-    client_secret = "b3U6AkxKbPNc81NfFzWvFYrDZ1IvJEY"
+    _client_secret = None
 
-    app_endpoint = None
+    _app_endpoint = None
 
-    access_token = None
-    current_user = None
+    _access_token = None
 
-    autoreconnect = False
-    last_login_info = {}
+    _current_user = None
 
-    me = None
+    _auto_reconnect = False
 
-    last_response = None
+    _last_login_info = {}
 
-    # todo: pass in config, or call setters
-    def __init__(
-            self,
-            host=None,
-            port=None,
-            org=None,
-            app=None,
-            client_id=None,
-            client_secret=None,
-            debug=False,
-            autoreconnect=False,
-            use_compression=True):
-        if host:
-            self.host = host
-        if port:
-            self.port = port
-        if org:
-            self.org = org
-        if app:
-            self.app = app
-        if client_id:
-            self.client_id = client_id
-        if client_secret:
-            self.client_secret = client_secret
-        self.use_compression = use_compression
-        self.autoreconnect = autoreconnect
-        self.app_endpoint = "http://{0}:{1}/{2}/{3}".format(
-            self.host, self.port, self.org, self.app)
-        self.management_endpoint = "http://{0}:{1}/management".format(
-            self.host, self.port)
-        self.debug = debug
+    _me = None
 
-    def _debug(self, txt):
-        if self.debug:
-            print("UG_client:" + str(txt))
+    _last_response = None
+
+    _default_timeout = 20
+
+    def __init__(self, **kwargs):
+        """
+        :param str host:
+        :param int port:
+        :param str org:
+        :param str app:
+        :param str client_id:
+        :param str client_secret:
+        :param boolean debug:
+        :param boolean autoreconnect:
+        :param boolean use_compression:
+        :param boolean use_ssl:
+        """
+        host = kwargs.pop('host', None)
+        app = kwargs.pop('app', None)
+        org = kwargs.pop('org', None)
+        assert host is not None
+        assert org is not None
+        assert app is not None
+
+        self._client_id = kwargs.pop('client_id', None)
+        self._client_secret = kwargs.pop('client_secret', None)
+        self._use_compression = kwargs.pop('use_compression', None)
+        self._auto_reconnect = kwargs.pop('autoreconnect', None)
+        use_ssl = kwargs.pop('use_ssl', False)
+        port = kwargs.pop('port', None)
+
+        scheme = 'http://'
+        if use_ssl:
+            scheme = 'https://'
+
+        self._app_endpoint = scheme + host
+        self._management_endpoint = scheme + host
+
+        if port is not None:
+            self._app_endpoint += ':' + str(port)
+            self._management_endpoint += ':' + str(port)
+
+        self._app_endpoint += '/%s/%s' % (org, app)
+        self._management_endpoint += "/management"
+        self._access_token = None
+        self._token_expires = None
+
+    @property
+    def me(self):
+        """
+
+        :return:
+        """
+        return self._me
+
+    @property
+    def access_token(self):
+        """
+        Prevents token from being read
+
+        :return:
+        """
+        return None
+
+    @access_token.setter
+    def access_token(self, token):
+        """
+        Token setter will reset options for properties
+
+        :param token:
+        :return:
+        """
+        self._auto_reconnect = False
+        self._client_id = None
+        self._client_secret = None
+        self._access_token = token
+        self._me = None
+        self._last_login_info = {}
+        self._token_expires = None
+
+    def login(self, **kwargs):
+        """
+
+        :param superuser:
+        :param username:
+        :param password:
+        :param client_id:
+        :param client_secret:
+        :param ttl:
+        :return:
+        """
+        client_id = kwargs.pop('client_id', self._client_id)
+        client_secret = kwargs.pop('client_secret', self._client_secret)
+        user_name = kwargs.pop('username', None)
+        super_user = kwargs.pop('superuser', None)
+        password = kwargs.pop('password', None)
+        ttl = kwargs.pop('ttl', None)
+
+        self._client_id = client_id
+        self._client_secret = client_secret
+
+        endpoint = self._app_endpoint
+
+        self._last_login_info = {
+            'superuser': super_user,
+            'ttl': ttl
+        }
+
+        if not user_name and not super_user:
+            logger.info("Authenticating with client credentials")
+            data = {
+                "grant_type": "client_credentials",
+                "client_id": self._client_id,
+                "client_secret": self._client_secret
+            }
+        else:
+            logger.info("Authenticating with username and password")
+            self._auto_reconnect = False
+            data = {
+                "grant_type": "password",
+                "username": user_name,
+                "password": password
+            }
+            if super_user:
+                logger.info("Authenticating as super user")
+                endpoint = self._management_endpoint
+                data['username'] = super_user
+
+        if ttl is not None:
+            if ttl < 1:
+                raise RuntimeError('You cannot set a ttl less than one second')
+
+            # request is made with milliseconds
+            data['ttl'] = int(ttl) * 1000
+
+        login_response = requests.post(endpoint + "/token", data=data)
+        login_response.raise_for_status()
+        login_json = login_response.json()
+
+        self._token_expires = time.time() + int(login_json['expires_in'])
+        self._access_token = login_json['access_token']
+        if user_name:
+            self._me = login_json['user']
 
     def set_last_response(self, response):
-        self.last_response = response
+        """
+        Local storage for the last response made
+
+        :param response:
+        :return:
+        """
+        self._last_response = response
 
     def reconnect(self):
-        self.login(**self.last_login_info)
+        self.login(**self._last_login_info)
 
-    def login(
-            self,
-            superuser=None,
-            username=None,
-            password=None,
-            client_id=None,
-            client_secret=None,
-            ttl=None):
-        endpoint = self.app_endpoint
-        if client_id:
-            self.client_id = client_id
-            self.last_login_info['client_id'] = client_id
-        if client_secret:
-            self.client_secret = client_secret
-            self.last_login_info['client_secret'] = client_secret
-        if username:
-            self.username = username
-            self.last_login_info['username'] = username
-        if superuser:
-            self.superuser = superuser
-            endpoint = self.management_endpoint
-            self.last_login_info['superuser'] = superuser
-        if password:
-            self.password = password
-            self.last_login_info['password'] = password
-        # login as super user
-        data = {}
-        if not username and not superuser:
-            self.grant_type = "client_credentials"
-            data = {"grant_type": "client_credentials",
-                    "client_id": self.client_id,
-                    "client_secret": self.client_secret}
-        else:
-            self.grant_type = "password"
-            data = {"grant_type": "password",
-                    "password": self.password}
-
-            if username:
-                data['username'] = self.username
-            if superuser:
-                print("logging in as super user")
-                data['username'] = self.superuser
-        if ttl:
-            data['ttl'] = ttl
-            self.last_login_info['ttl'] = ttl
-
-        self._debug("login: grant_type: " + self.grant_type)
-        self._debug("login: data: " + str(data))
-
-        r = requests.post(endpoint + "/token", data=data)
-        self.set_last_response(r)
-        r.raise_for_status()
-
-        json = r.json()
-
-        self.access_token = json['access_token']
-        self.token_response = json
-        if username:
-            #self.me = json['entities'][0]
-            self.me = json['user']
-
+    @property
     def std_headers(self):
-        headers = {}
-        headers['user-agent'] = 'python usergrid client v.{0}'.format(__version__)
-        headers['Accept'] = 'application/json'
-        headers['Authorization'] = "Bearer {0}".format(self.access_token)
-        if self.use_compression:
+        """
+        Standard headers sent with each request
+
+        :return:
+        """
+        headers = {
+            'user-agent': 'python usergrid client v.{0}'.format(__version__),
+            'Accept': 'application/json',
+        }
+
+        if self._access_token is not None:
+            headers['Authorization'] = "Bearer %s" % self._access_token
+
+        if self._use_compression:
             headers['Accept-Encoding'] = "gzip, deflate"
+
         return headers
 
-    def get_full_endpoint(self, path):
+    def _get_full_endpoint(self, path):
+        """
+        Builds the endpoint for making a request
+
+        :param str path:
+        :rtype str:
+        :return:
+        """
         if '/' in path[0]:
             path = path[1:]
-        full = "{0}/{1}".format(self.app_endpoint, path)
-        return full
+
+        return "{0}/{1}".format(self._app_endpoint, path)
 
     def collect_entities(self, endpoint, ql=None, limit=None):
-        entities = []
-        if not limit or limit < 1000:
-            limit = 1000
-        page_entities, cursor = self.get_entities(endpoint, ql=ql, limit=limit)
-        entities.extend(page_entities)
-        count = len(page_entities)
+        """
+        A generator to return all entities
 
-        old_cursor = None
-        while cursor and (len(page_entities) > 0) and old_cursor != cursor:
-            old_cursor = cursor
+        Do no use this for end-user code
+
+        :param str endpoint:
+        :param str ql:
+        :param int limit:
+        :rtype dict:
+        :return:
+        """
+        cursor = None
+
+        if not limit or limit > 100:
+            limit = 100
+
+        while cursor is not None:
             page_entities, cursor = self.get_entities(
-                endpoint, ql=ql, cursor=cursor, limit=limit)
-            entities.extend(page_entities)
-            count = count + len(page_entities)
-        
+                endpoint,
+                ql=ql,
+                limit=limit
+            )
 
-        return entities
+            for entity in page_entities:
+                yield entity
 
     def process_entities(self, endpoint, method, ql=None, limit=None):
-        page_entities, cursor = self.get_entities(endpoint, ql=ql, limit=limit)
-        # process these entities
-        for entity in page_entities:
+        """
+        Apply a function to each entity
+
+        Do not use this for end-user code as it will apply to all entites
+        in a collection
+
+        :param str endpoint:
+        :param callable method:
+        :param str ql:
+        :param int limit:
+        :return:
+        """
+        for entity in self.collect_entities(endpoint, ql, limit):
             method(entity)
 
-        while cursor:
-            page_entities, cursor = self.get_entities(
-                endpoint, ql=ql, cursor=cursor, limit=limit)
-            for entity in page_entities:
-                method(entity)
-
     def get_entities(self, endpoint, cursor=None, ql=None, limit=None):
-        try:
-            # assumes end point delivers page(s) of entities
-            if cursor or ql or limit:
-                endpoint = endpoint + "?"
-            if limit:
-                endpoint = endpoint + "limit=" + str(limit) + "&"
-            if ql:
-                endpoint = endpoint + "ql=" + ql + "&"
-            if cursor:
-                endpoint = endpoint + "cursor=" + cursor + "&"
-            # print endpoint
-            r = requests.get(
-                self.get_full_endpoint(endpoint),
-                headers=self.std_headers())
-            self.set_last_response(r)
-            # print r.text.encode('utf-8')
-            r.raise_for_status
-            response = r.json()
-            self._debug(response)
-            if 'exception' in response:
-                # check for expired_token and autoreconnect
-                if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
-                    self.reconnect()
-                    r = requests.get(
-                            self.get_full_endpoint(endpoint),
-                            headers=self.std_headers())
-                    self.set_last_response(r)
-                    r.raise_for_status
-                    response = r.json()
-                else:
-                    # suppressing this message for now - happens way too often, mucks up the logs
-                    # print(response['error_description'])
-                    return [[], None] # TODO: RAISE EXCEPTION
-            if 'entities' in response or 'list' in response:
-                if 'entities' in response:
-                    entities = response['entities']
-                else:
-                    entities = response['list']
-                if 'cursor' in response:
-                    cursor = response['cursor']
-                else:
-                    cursor = None
-                return [entities, cursor]
-            else:
-                return [[], None]
-        except:
-            print("Exception")
-            traceback.print_exc(file=sys.stdout)
-            if r:
-                print("Response text: {0}".format(r.text))
-                print("Response status: {0}".format(r.status_code))
-            else:
-                print(r)
+        """
+        Get entities from UG
 
-            print("endpoint: {0}".format(endpoint))
-            print("cursor: {0}".format(cursor))
-            print("ql: {0}".format(ql))
-            print("limit: {0}".format(limit))
-            return [[], None]
+        :param str endpoint:
+        :param str cursor:
+        :param str ql:
+        :param int limit:
+        :rtype (list, str):
+        :return:
+        """
+        query_params = {}
+
+        if limit:
+            query_params['limit'] = int(limit)
+
+        if ql:
+            query_params['ql'] = ql
+
+        if cursor:
+            query_params['cursor'] = cursor
+
+        entities = None
+        cursor = None
+
+        try:
+            response = self._make_request(
+                'GET',
+                self._get_full_endpoint(endpoint),
+                params=query_params
+            )
+            if 'entities' in response:
+                entities = response['entities']
+
+            if 'list' in response:
+                entities = response['list']
+
+            if 'cursor' in response:
+                cursor = response['cursor']
+
+        except requests.HTTPError as request_exception:
+            if 400 < request_exception.errno < 500:
+                pass
+            else:
+                raise
+
+        return [entities, cursor]
 
     def get_entity(self, endpoint, ql=None):
-        entities, cursor = self.get_entities(endpoint, ql=ql)
+        """
+        Gets one entity from UG
+
+        :param str endpoint:
+        :param str ql:
+        :rtype dict | None:
+        :return:
+        """
+        entities, cursor = self.get_entities(endpoint, ql=ql, limit=1)
+        entity = None
         if entities:
             entity = entities[0]
-            return entity
-        return None
+
+        return entity
+
+    def get_entity_by_id(self, entity, entity_id):
+        """
+        Helper to get an entity by an entity_id
+
+        :param entity:
+        :param entity_id:
+        :return:
+        """
+        return self.get_entity(entity + '/' + entity_id)
 
     def delete_entity(self, endpoint):
-        r = requests.delete(
-            self.get_full_endpoint(endpoint),
-            headers=self.std_headers())
-        self.set_last_response(r)
-        r.raise_for_status
-        response = r.json()
-        if 'exception' in response:
-            # check for expired_token and autoreconnect
-            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
-                self.reconnect()
-                r = requests.delete(
-                        self.get_full_endpoint(endpoint),
-                        headers=self.std_headers())
-                self.set_last_response(r)
-                r.raise_for_status
-                response = r.json()
-            else:
-                #print(response['error_description'])
-                return None # TODO : raise exception
+        """
+        Calls DELETE on an endpoint
+
+        :param endpoint:
+        :return:
+        """
+        response = self._make_request(
+            'DELETE',
+            self._get_full_endpoint(endpoint)
+        )
+
         return response
+
+    def delete_entity_by_id(self, entity, entity_id):
+        """
+        Helper to delete entity by an id
+
+        :param entity:
+        :param entity_id:
+        :return:
+        """
+        return self.delete_entity(entity + '/' + entity_id)
 
     def post_entity(self, endpoint, data):
-        r = requests.post(
-            self.get_full_endpoint(endpoint),
-            headers=self.std_headers(),
-            data=json.dumps(data))
-        self.set_last_response(r)
-        r.raise_for_status
-        response = r.json()
-        if 'exception' in response:
-            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
-                self.reconnect()
-                r = requests.post(
-                        self.get_full_endpoint(endpoint),
-                        headers=self.std_headers(),
-                        data=json.dumps(data))
-                self.set_last_response(r)
-                r.raise_for_status
-                response = r.json()
-            else:
-                print(response['error_description'])
-                return None
+        """
+        Creates an entity
+        
+        :param str endpoint:
+        :param dict data:
+        :return: 
+        """
+        response = self._make_request(
+            'POST',
+            self._get_full_endpoint(endpoint),
+            data=json.dumps(data)
+        )
+
         return response['entities'][0]
 
-    # maybe should pass in uuid, as a failsafe, rather than rely on endpoint
     def update_entity(self, endpoint, data):
-        r = requests.put(
-            self.get_full_endpoint(endpoint),
-            headers=self.std_headers(),
-            data=json.dumps(data))
-        self.set_last_response(r)
-        r.raise_for_status
-        response = r.json()
-        if 'exception' in response:
-            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
-                self.reconnect()
-                r = requests.put(
-                        self.get_full_endpoint(endpoint),
-                        headers=self.std_headers(),
-                        data=json.dumps(data))
-                self.set_last_response(r)
-                r.raise_for_status
-                response = r.json()
-            else:
-                print(response['error_description'])
-                return None
+        """
+        Runs put on an endpoint
+
+        :param str endpoint:
+        :param dict data:
+        :return:
+        """
+        response = self._make_request(
+            'PUT',
+            self._get_full_endpoint(endpoint),
+            data=json.dumps(data)
+        )
+
         return response['entities'][0]
 
-    # ? Should this autocreate /users/me/activities
+    def update_entity_by_id(self, entity, entity_id, data):
+        """
+        Helper to update an entity by id
+
+        :param entity:
+        :param entity_id:
+        :param data:
+        :return:
+        """
+        return self.update_entity(entity + '/' + entity_id, data)
+
     def post_activity(self, endpoint, actor, verb, content, data=None):
-        post_data = {"actor": actor, "verb": verb, "content": content}
+        """
+        Saves activity for an actor
+
+        :param str endpoint:
+        :param str actor:
+        :param str verb:
+        :param str content:
+        :param dict data:
+        :return:
+        """
+        post_data = {
+            "actor": actor,
+            "verb": verb,
+            "content": content
+        }
+
         if data:
             post_data.update(data)
-        r = requests.post(
-            self.get_full_endpoint(endpoint),
-            data=json.dumps(post_data),
-            headers=self.std_headers())
-        self.set_last_response(r)
-        r.raise_for_status
-        response = r.json()
-        if 'exception' in response:
-            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
-                self.reconnect()
-                r = requests.post(
-                        self.get_full_endpoint(endpoint),
-                        data=json.dumps(post_data),
-                        headers=self.std_headers())
-                self.set_last_response(r)
-                r.raise_for_status
-                response = r.json()
-            else:
-                print(response['error_description'])
-                return None
-        return response
 
-    def get_connections(self, entity):
-        if 'metadata' in list(entity.keys()) and 'connections' in list(entity[
-                'metadata'].keys()):
+        return self._make_request(
+            'POST',
+            self._get_full_endpoint(endpoint),
+            data=json.dumps(post_data),
+        )
+
+    @staticmethod
+    def get_connections(entity):
+        """
+        Helps pulls connections from an entity
+
+        :param dict entity:
+        :return:
+        """
+        if 'metadata' in entity and 'connections' in entity['metadata']:
             return entity['metadata']['connections']
+
         return None
 
-    # seperate method since we don't need data...
     def post_relationship(self, endpoint):
-        r = requests.post(
-            self.get_full_endpoint(endpoint),
-            headers=self.std_headers())
-        self.set_last_response(r)
-        r.raise_for_status
-        response = r.json()
-        if 'exception' in response:
-            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
-                self.reconnect()
-                r = requests.post(
-                        self.get_full_endpoint(endpoint),
-                        headers=self.std_headers())
-                self.set_last_response(r)
-                r.raise_for_status
-                response = r.json()
-            else:
-                print(response['error_description'])
-                return None
-        return response
+        """
+        Posts a relationship to an entity
+
+        :param str endpoint:
+        :return:
+        """
+        return self._make_request(
+            'POST',
+            self._get_full_endpoint(endpoint)
+        )
+
+    def delete_relationship(self, endpoint):
+        """
+        Deletes a relationship to an entity
+
+        :param str endpoint:
+        :return:
+        """
+        return self._make_request(
+            'DELETE',
+            self._get_full_endpoint(endpoint)
+        )
 
     def post_file(self, endpoint, filepath):
-        filename = filepath.split("/")[-1]
+        """
+        Saves a file to UserGrid
 
-        headers = self.std_headers()
-#	headers['Content-Type'] = 'application/x-www-form-urlencoded'
-#	headers['Content-Type'] = 'multipart/form-data'
+        :param endpoint:
+        :param filepath:
+        :return:
+        """
+        file_handler = None
+        try:
+            file_handler = open(filepath, 'rb')
 
-        files = {'file': open(filepath, 'rb'), 'name': filename}
+            files = {
+                'file': file_handler,
+                'name': filepath.split("/")[-1]
+            }
 
-        r = requests.post(
-            self.get_full_endpoint(endpoint),
-            headers=headers,
-            files=files)
-        self.set_last_response(r)
-        r.raise_for_status
-        response = r.json()
-        if 'exception' in response:
-            if ('expired_token' in response['error'] or 'auth_invalid' in response['error']) and self.autoreconnect:
-                self.reconnect()
-                r = requests.post(
-                        self.get_full_endpoint(endpoint),
-                        headers=headers,
-                        files=files)
-                self.set_last_response(r)
-                r.raise_for_status
-                response = r.json()
-            else:
-                print(response['error_description'])
-                return None
+            response = self._make_request(
+                'POST',
+                self._get_full_endpoint(endpoint),
+                files=files,
+                timeout=300  # 5min to upload
+            )
+        finally:
+            if file_handler:
+                file_handler.close()
+
         return response
 
-# These are some collection-aware utility functions
-    def get_actor(self, user_id=None):
-        if not user_id:
-            user = self.get_entity("/users/me")
-        else:
-            user = self.get_entity("/users/{0}".format(user_id))
-        if not user:
-            users, cursor = self.get_entities(self.get_full_endpoint(
-                "/users"), ql="select * where uuid='{0}*' or username='{0}*' or name='{0}*'")
-            if users and len(users) > 0:
-                user = users[0]
-        if user:
-            actor = self.get_actor_from_user(user)
-        return None
+    @staticmethod
+    def get_actor_from_user(user):
+        """
+        Extracts the actor from a user entity
 
-    def get_actor_from_user(self, user):
-        if 'name' not in list(user.keys()):
+        :param dict user:
+        :return:
+        """
+        name = ''
+        picture = ''
+        email = ''
+
+        if 'username' in user:
             name = user['username']
-        else:
+
+        if 'name' in user:
             name = user['name']
-        if 'picture' not in list(user.keys()):
-            picture = ''
-        else:
+
+        if 'picture' in user:
             picture = user['picture']
-        if 'email' not in list(user.keys()):
-            email = ''
-        else:
+
+        if 'email' in user:
             email = user['email']
-        actor = {
+
+        return {
             "uuid": user['uuid'],
             "displayName": name,
             "username": user['username'],
             "email": email,
-            "picture": picture}
-        return actor
+            "picture": picture
+        }
 
-    def print_user(self, user):
-        print("{0}\t{1}".format(user['username'], user['uuid']))
+    @staticmethod
+    def print_user(user):
+        warnings.warn(DeprecationWarning)
+
+    def _check_expired_token(self):
+        """
+        Called in _make_request to check if the token is expired
+        :return:
+        """
+        # No expires set because the access_token was manually inputted
+        if self._token_expires is None:
+            return
+
+        # Still have time on the token
+        if self._token_expires > time.time():
+            return
+
+        if self._auto_reconnect:
+            self.login()
+            return
+
+        raise UserGridException('Access token has expired')
+
+    def _make_request(self, method, url, **kwargs):
+        """
+        Makes a call to user grid and forces a timeout
+
+        :param method:
+        :param url:
+        :param kwargs:
+        :rtype dict:
+        :return:
+        """
+        try:
+            self._check_expired_token()
+            if 'timeout' not in kwargs:
+                kwargs['timeout'] = self._default_timeout
+
+            if 'headers' not in kwargs:
+                kwargs['headers'] = {}
+
+            kwargs['headers'].update(self.std_headers)
+
+            response = requests.request(
+                method,
+                url,
+                **kwargs
+            )
+
+            logger.debug('%s [%s] %s', method, response.status_code, url)
+            self._last_response = response
+            response_json = response.json()
+            if 'exception' not in response_json:
+                return response_json
+
+            raise UserGridException(response_json['error_description'])
+
+        except Exception as request_exception:
+            logger.exception(request_exception)
+            raise
+
+
+class UserGridException(BaseException):
+    pass

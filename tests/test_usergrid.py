@@ -1,8 +1,13 @@
+"""
+UserGrid tests
+"""
 from unittest import TestCase
 import requests
 import requests_mock
 from tests import read_json_file
 from usergrid.usergrid import UserGrid
+from usergrid.usergrid import UserGridException
+import logging
 
 SESSION = requests.Session()
 ADAPTER = requests_mock.Adapter()
@@ -26,12 +31,15 @@ class TestUserGrid(TestCase):
             host='usergrid.com',
             org='man',
             app='chuck',
+            port=80,
             client_id='manchuck',
             client_secret='manbearpig'
         )
+        logging.getLogger(UserGrid.__name__).disabled = True
 
     def test_it_should_get_entities(self, mock):
         """
+        Ensures UG fetches all entities
 
         :param mock:
         :return:
@@ -76,7 +84,7 @@ class TestUserGrid(TestCase):
 
     def test_it_should_get_entities_with_query_limit_and_cursor(self, mock):
         """
-        Tests get_entities calls with query parameter
+        Ensures get_entities works with cursor and query
 
         :param mock:
         :return:
@@ -155,7 +163,7 @@ class TestUserGrid(TestCase):
 
     def test_it_should_not_fetch_entities(self, mock):
         """
-        Ensures one entity is returned
+        Ensures an exception is thrown with a bad status code
 
         :param mock:
         :return:
@@ -168,23 +176,12 @@ class TestUserGrid(TestCase):
             status_code=404
         )
 
-        entities, actual_cursor = self.user_grid.get_entities('users')
-
-        self.assertEqual(
-            None,
-            actual_cursor,
-            'UserGrid get_entities did not return correct cursor when not found'
-        )
-
-        self.assertEqual(
-            [],
-            entities,
-            'UserGrid get_entities did not return empty list when not found'
-        )
+        with self.assertRaises(UserGridException) as failed:
+            self.user_grid.get_entities('users')
 
     def test_it_should_delete_entity(self, mock):
         """
-        Ensures creating entities works as expected
+        Ensures deleting entities works as expected
 
         :param mock:
         :return:
@@ -233,6 +230,7 @@ class TestUserGrid(TestCase):
 
     def test_it_should_put_entity(self, mock):
         """
+        Ensures UG can update an entity
 
         :return:
         """
@@ -259,7 +257,8 @@ class TestUserGrid(TestCase):
 
     def test_it_should_post_activity(self, mock):
         """
-        Ensures usergrid will post_activity correctly
+        Ensures that activity is posted correctly
+
         :param mock:
         :return:
         """
@@ -294,11 +293,15 @@ class TestUserGrid(TestCase):
 
     def test_it_should_post_relationship(self, mock):
         """
-        Ensures usergid posts a relationship correctly
+        Ensures UG posts a relationship correctly
+
         :param mock:
         :return:
         """
-        post_relation_response = read_json_file('post_relationship_response.json')
+        post_relation_response = read_json_file(
+            'post_relationship_response.json'
+        )
+
         mock.register_uri(
             "POST",
             "http://usergrid.com:80/man/chuck/users/has/story/foo",
@@ -345,6 +348,7 @@ class TestUserGrid(TestCase):
     def test_it_should_login_with_client_credentials(self, mock):
         """
         Ensures UserGrid will login correctly with client credentials
+
         :param mock:
         :return:
         """
@@ -369,13 +373,15 @@ class TestUserGrid(TestCase):
     def test_it_should_login_with_password(self, mock):
         """
         Ensures UserGrid will login correctly with password grant
+
         :param mock:
         :return:
         """
         def request_match(request):
+            test = request.body
             return (
                 request.body ==
-                'grant_type=password&password=bar&username=foo')
+                'grant_type=password&username=foo&password=bar')
 
         post_response = read_json_file('password_auth_response.json')
         mock.register_uri(
@@ -393,6 +399,7 @@ class TestUserGrid(TestCase):
     def test_it_should_fail_login_with_bad_credentials(self, mock):
         """
         Ensures UserGrid will fail to login with bad password grant
+
         :param mock:
         :return:
         """
@@ -404,7 +411,7 @@ class TestUserGrid(TestCase):
         post_response = read_json_file('password_auth_failed_response.json')
         mock.register_uri(
             "POST",
-            "http://usergrid.com:80/man/chuck/token",
+            "http://usergrid.com/man/chuck/token",
             json=post_response,
             additional_matcher=request_match,
             status_code=400
@@ -419,6 +426,7 @@ class TestUserGrid(TestCase):
     def test_it_should_fail_login_with_bad_password(self, mock):
         """
         Ensures UserGrid will fail to login with bad password grant
+
         :param mock:
         :return:
         """
@@ -430,7 +438,7 @@ class TestUserGrid(TestCase):
         post_response = read_json_file('password_auth_failed_response.json')
         mock.register_uri(
             "POST",
-            "http://usergrid.com:80/man/chuck/token",
+            "http://usergrid.com/man/chuck/token",
             json=post_response,
             additional_matcher=request_match,
             status_code=400
@@ -451,7 +459,6 @@ class TestUserGrid(TestCase):
         :return:
         """
         def request_match(request):
-            test = request.body
             return (
                 request.body ==
                 'grant_type=client_credentials&client_id=foo&client_secret=bar')
@@ -459,7 +466,7 @@ class TestUserGrid(TestCase):
         post_response = read_json_file('grant_auth_response.json')
         mock.register_uri(
             "POST",
-            "http://usergrid.com:80/man/chuck/token",
+            "http://usergrid.com/man/chuck/token",
             json=post_response,
             additional_matcher=request_match
         )
@@ -473,3 +480,169 @@ class TestUserGrid(TestCase):
         )
 
         user_grid.login()
+
+    def test_it_should_reconnect_when_token_expires(self, mock):
+        """
+        Ensures a reconnect happens when the token is expired
+
+        :param mock:
+        :return:
+        """
+        post_response = read_json_file('grant_auth_response.json')
+        called = False
+
+        def multiple_response(request, context):
+            context.response_code = 200
+            if not called:
+                post_response['expires_in'] = -100000
+
+            return post_response
+
+        login_request = mock.register_uri(
+            "POST",
+            "http://usergrid.com/man/chuck/token",
+            json=multiple_response
+        )
+
+        entities_response = read_json_file('get_entity_response.json')
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com/man/chuck/users/foo?limit=1",
+            json=entities_response
+        )
+
+        user_grid = UserGrid(
+            host='usergrid.com',
+            org='man',
+            app='chuck',
+            client_id='foo',
+            client_secret='bar',
+            autoreconnect=True
+        )
+
+        user_grid.login()
+
+        entity = user_grid.get_entity('/users/foo')
+
+        self.assertEqual(
+            '5dc2e4ba-2f33-11e6-9880-47e38a0eed23',
+            entity['uuid'],
+            'UserGrid get_entities did not return correct entities'
+        )
+
+        self.assertEqual(
+            2,
+            login_request.call_count
+        )
+
+    def test_it_should_not_reconnect_when_token_expires(self, mock):
+        """
+        Ensures a reconnect will not happen when turned off
+
+        :param mock:
+        :return:
+        """
+        post_response = read_json_file('grant_auth_response.json')
+        called = False
+
+        def multiple_response(request, context):
+            context.response_code = 200
+            if not called:
+                post_response['expires_in'] = -100000
+
+            return post_response
+
+        login_request = mock.register_uri(
+            "POST",
+            "http://usergrid.com/man/chuck/token",
+            json=multiple_response
+        )
+
+        entities_response = read_json_file('get_entity_response.json')
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com/man/chuck/users/foo?limit=1",
+            json=entities_response
+        )
+
+        user_grid = UserGrid(
+            host='usergrid.com',
+            org='man',
+            app='chuck',
+            client_id='foo',
+            client_secret='bar',
+            autoreconnect=False
+        )
+
+        user_grid.login()
+        with self.assertRaises(UserGridException) as expired:
+            user_grid.get_entity('/users/foo')
+
+        self.assertEqual(
+            1,
+            login_request.call_count
+        )
+
+        self.assertEqual(
+            str(expired.exception),
+            'Access token has expired'
+        )
+
+    def test_it_should_not_reconnect_when_token_set(self, mock):
+        """
+        Ensures that UG will not reconnect when setting a user token
+
+        :param mock:
+        :return:
+        """
+        post_response = read_json_file('grant_auth_response.json')
+        called = False
+
+        def multiple_response(request, context):
+            context.response_code = 200
+            if not called:
+                post_response['expires_in'] = -100000
+
+            return post_response
+
+        login_request = mock.register_uri(
+            "POST",
+            "http://usergrid.com/man/chuck/token",
+            json=multiple_response
+        )
+
+        entities_response = read_json_file('expired_token.json')
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com/man/chuck/users/foo?limit=1",
+            json=entities_response,
+            status_code=401
+        )
+
+        user_grid = UserGrid(
+            host='usergrid.com',
+            org='man',
+            app='chuck',
+            client_id='foo',
+            client_secret='bar',
+            autoreconnect=True
+        )
+
+        # connect to get a token
+        user_grid.login()
+
+        user_grid.access_token = 'FOO-BAR-BAZ-BAT'
+
+        with self.assertRaises(UserGridException) as expired:
+            user_grid.get_entity('/users/foo')
+
+        self.assertEqual(
+            1,
+            login_request.call_count
+        )
+
+        self.assertEqual(
+            str(expired.exception),
+            'Unable to authenticate due to expired access token'
+        )
+
