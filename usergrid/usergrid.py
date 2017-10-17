@@ -1,15 +1,22 @@
-import requests
+"""
+User Grid class
+"""
 import json
 import logging
 import warnings
 import time
+import requests
 
 __version__ = '0.1.3'
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
-
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-instance-attributes
 class UserGrid(object):
+    """
+    Class wrapping UG calls easier
+    """
     _client_id = None
 
     _client_secret = None
@@ -17,8 +24,6 @@ class UserGrid(object):
     _app_endpoint = None
 
     _access_token = None
-
-    _current_user = None
 
     _auto_reconnect = False
 
@@ -74,7 +79,7 @@ class UserGrid(object):
         self._token_expires = None
 
     @property
-    def me(self):
+    def me(self):  # pylint: disable=invalid-name
         """
 
         :return:
@@ -180,7 +185,13 @@ class UserGrid(object):
         self._last_response = response
 
     def reconnect(self):
-        self.login(**self._last_login_info)
+        """
+        Login again
+
+        :return:
+        """
+        warnings.warn(DeprecationWarning)
+        self.login()
 
     @property
     def std_headers(self):
@@ -215,7 +226,7 @@ class UserGrid(object):
 
         return "{0}/{1}".format(self._app_endpoint, path)
 
-    def collect_entities(self, endpoint, ql=None, limit=None):
+    def collect_entities(self, endpoint, ql=None, limit=None):  # pylint: disable=invalid-name
         """
         A generator to return all entities
 
@@ -242,7 +253,7 @@ class UserGrid(object):
             for entity in page_entities:
                 yield entity
 
-    def process_entities(self, endpoint, method, ql=None, limit=None):
+    def process_entities(self, endpoint, method, ql=None, limit=None):  # pylint: disable=invalid-name
         """
         Apply a function to each entity
 
@@ -258,7 +269,7 @@ class UserGrid(object):
         for entity in self.collect_entities(endpoint, ql, limit):
             method(entity)
 
-    def get_entities(self, endpoint, cursor=None, ql=None, limit=None):
+    def get_entities(self, endpoint, cursor=None, ql=None, limit=None):  # pylint: disable=invalid-name
         """
         Get entities from UG
 
@@ -306,7 +317,7 @@ class UserGrid(object):
 
         return [entities, cursor]
 
-    def get_entity(self, endpoint, ql=None):
+    def get_entity(self, endpoint, ql=None):  # pylint: disable=invalid-name
         """
         Gets one entity from UG
 
@@ -315,7 +326,7 @@ class UserGrid(object):
         :rtype dict | None:
         :return:
         """
-        entities, cursor = self.get_entities(endpoint, ql=ql, limit=1)
+        entities, cursor = self.get_entities(endpoint, ql=ql, limit=1)  # pylint: disable=unused-variable
         entity = None
         if entities:
             entity = entities[0]
@@ -359,10 +370,10 @@ class UserGrid(object):
     def post_entity(self, endpoint, data):
         """
         Creates an entity
-        
+
         :param str endpoint:
         :param dict data:
-        :return: 
+        :return:
         """
         response = self._make_request(
             'POST',
@@ -399,7 +410,7 @@ class UserGrid(object):
         """
         return self.update_entity(entity + '/' + entity_id, data)
 
-    def post_activity(self, endpoint, actor, verb, content, data=None):
+    def post_activity(self, endpoint, actor, verb, content, data=None):  #pylint: disable=too-many-arguments
         """
         Saves activity for an actor
 
@@ -525,7 +536,14 @@ class UserGrid(object):
 
     @staticmethod
     def print_user(user):
+        """
+        Deprecated call do not use
+
+        :param user:
+        :return:
+        """
         warnings.warn(DeprecationWarning)
+        logger.info(user)
 
     def _check_expired_token(self):
         """
@@ -586,4 +604,7 @@ class UserGrid(object):
 
 
 class UserGridException(BaseException):
+    """
+    Exception class for UG
+    """
     pass
