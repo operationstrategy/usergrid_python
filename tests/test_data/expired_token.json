@@ -1,0 +1,7 @@
+ {
+    "duration": 0,
+    "error": "expired_token",
+    "error_description": "Unable to authenticate due to expired access token",
+    "exception": "org.apache.usergrid.rest.exceptions.SecurityException",
+    "timestamp": 1508257315770
+}

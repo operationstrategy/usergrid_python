@@ -1,0 +1,23 @@
+{
+  "action": "delete",
+  "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+  "applicationName": "orange",
+  "duration": 61,
+  "entities": [
+    {
+      "created": 1508213566064,
+      "foo": "bar",
+      "metadata": {
+        "path": "/tests/6e02f70a-b2f1-11e7-93c4-3965d114ceaa"
+      },
+      "modified": 1508213566064,
+      "type": "test",
+      "uuid": "6e02f70a-b2f1-11e7-93c4-3965d114ceaa"
+    }
+  ],
+  "organization": "sxm",
+  "params": {},
+  "path": "/tests",
+  "timestamp": 1508213587451,
+  "uri": "http://localhost:8080/sxm/orange/tests"
+}

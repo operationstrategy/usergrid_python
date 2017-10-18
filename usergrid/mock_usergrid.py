@@ -1,9 +1,4 @@
-from __future__ import absolute_import
-from __future__ import print_function
 #!/usr/bin/python
-
-__version__='0.1.1'
-
 import requests
 import json
 import datetime
@@ -12,9 +7,13 @@ import time
 import os
 import sys
 import traceback
+import logging
 
+__version__ = '0.1.4'
 # TODO: need to include entity not exists errors, etc. - raise them when
 # problem occurs
+
+logger = logging.getLogger(__name__)
 
 
 class MockUserGrid:
@@ -23,7 +22,8 @@ class MockUserGrid:
     # eg { '/channels/123456': { <channel data> },
     #      '/stories/9999/has_intro/audioclips' : [{ <audioclip data> }]
 
-    # note in testing you need to be aware of what you expect to get back from UG so you put the right thing in
+    # note in testing you need to be aware of what you expect to get back
+    # from UG so you put the right thing in
 
     me = None
 
@@ -49,7 +49,7 @@ class MockUserGrid:
 
     def _debug(self, txt):
         if self.debug:
-            print("UG_client:" + str(txt))
+            logger.debug("UG_client:" + str(txt))
 
     def set_last_response(self, response):
         self.last_response = response
@@ -75,44 +75,57 @@ class MockUserGrid:
             "modified": 1446535640630,
             "username": "mock.user",
             "email": "mock.user@bigmirrorlabs.com",
-            "activated": true,
-            "picture": "http://www.gravatar.com/avatar/eced2b67a2ec3d29c561d1db58ef1d4e",
+            "activated": True,
+            "picture":
+                "http://www.gravatar.com/avatar"
+                "/eced2b67a2ec3d29c561d1db58ef1d4e",
             "metadata": {
                 "path": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
                 "sets": {
-                    "rolenames": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/roles",
-                    "permissions": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/permissions"
+                    "rolenames":
+                        "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/roles",
+                    "permissions":
+                        "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                        "/permissions"
                 },
                 "connections": {
                     "my": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/my",
                     "owns": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/owns"
                 },
                 "collections": {
-                    "activities": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/activities",
-                    "devices": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/devices",
+                    "activities":
+                        "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                        "/activities",
+                    "devices":
+                        "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/devices",
                     "feed": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/feed",
-                    "groups": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/groups",
-                    "roles": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/roles",
-                    "following": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/following",
-                    "followers": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/followers"
+                    "groups":
+                        "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/groups",
+                    "roles": "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                             "/roles",
+                    "following":
+                        "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/following",
+                    "followers":
+                        "/users/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/followers"
                 }
             },
             "ourpicks_channel": "sxm_default_ourpicks"
         }
 
     def add_response_by_key(self, key, data):
-        print("Adding: {0} -> {1}".format(key,data))
+        logger.debug("Adding: {0} -> {1}".format(key, data))
         if not isinstance(data, list):
             self.responses[key] = [data]
         else:
             self.responses[key] = data
 
     def get_key(self, endpoint, ql="ql", cursor="cursor", limit="limit"):
-        key = "{0}.{1}.{2}".format(endpoint,ql,cursor)
+        key = "{0}.{1}.{2}".format(endpoint, ql, cursor)
         return key
 
-    def add_response(self, endpoint, ql=None, cursor=None, limit=None, data=None):
-        key = self.get_key(endpoint,ql=ql,cursor=cursor,limit=limit)
+    def add_response(self, endpoint, ql=None, cursor=None, limit=None,
+            data=None):
+        key = self.get_key(endpoint, ql=ql, cursor=cursor, limit=limit)
         self.add_response_by_key(key, data)
 
     def get_response_by_key(self, key):
@@ -121,7 +134,8 @@ class MockUserGrid:
         else:
             return None
 
-    def get_response(self, endpoint, ql=None, cursor=None, limit=None, data=None):
+    def get_response(self, endpoint, ql=None, cursor=None, limit=None,
+            data=None):
         key = self.get_key(endpoint, ql=ql, cursor=cursor, limit=limit)
         return self.get_response_by_key(key)
 
@@ -145,47 +159,44 @@ class MockUserGrid:
     def get_entities(self, endpoint, cursor=None, ql=None, limit=None):
         if not limit:
             limit = 10
-        response = self.get_response(endpoint, ql=ql, limit=limit, cursor=cursor)
-        return (response[0:limit],"newcursor")
+        response = self.get_response(endpoint, ql=ql, limit=limit,
+                                     cursor=cursor)
+        return (response[0:limit], "newcursor")
 
     def get_entity(self, endpoint, ql=None):
         response = self.get_response(endpoint, ql=ql)
         return response[0]
 
     def delete_entity(self, endpoint):
-        print("Not yet implemented")
+        logger.debug("Not yet implemented")
         return None
 
     def post_entity(self, endpoint, data):
-        print("Not yet implemented")
+        logger.debug("Not yet implemented")
         return None
 
     # maybe should pass in uuid, as a failsafe, rather than rely on endpoint
     def update_entity(self, endpoint, data):
-        print("Not yet implemented")
+        logger.debug("Not yet implemented")
 
     # ? Should this autocreate /users/me/activities
     def post_activity(self, endpoint, actor, verb, content, data=None):
-        print("Not yet implemented")
+        logger.debug("Not yet implemented")
 
     def get_connections(self, entity):
-        print("Not yet implemented in mock")
+        logger.debug("Not yet implemented in mock")
         pass
-
 
     # seperate method since we don't need data...
     def post_relationship(self, endpoint):
         return self.get_entity(endpoint)
 
     def post_file(self, endpoint, filepath):
-        print("Not yet implemented in mock")
+        logger.debug("Not yet implemented in mock")
 
-# These are some collection-aware utility functions
+    # These are some collection-aware utility functions
     def get_actor(self, user_id=None):
         return self.get_mock_user()
 
     def get_actor_from_user(self, user):
         return self.get_mock_user()
-
-    def print_user(self, user):
-        print("username\tuuid")
