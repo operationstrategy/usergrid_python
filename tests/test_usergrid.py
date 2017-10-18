@@ -8,6 +8,10 @@ from tests import read_json_file
 from usergrid.usergrid import UserGrid
 from usergrid.usergrid import UserGridException
 import logging
+from unittest.mock import Mock
+from unittest.mock import call
+import os
+
 
 SESSION = requests.Session()
 ADAPTER = requests_mock.Adapter()
@@ -33,7 +37,8 @@ class TestUserGrid(TestCase):
             app='chuck',
             port=80,
             client_id='manchuck',
-            client_secret='manbearpig'
+            client_secret='manbearpig',
+            use_compression=True
         )
         logging.getLogger(UserGrid.__name__).disabled = True
 
@@ -336,7 +341,7 @@ class TestUserGrid(TestCase):
 
         created = self.user_grid.post_file(
             '/users',
-            '../tests/test_data/Headshot_300_300.jpg'
+            os.path.dirname(os.path.realpath(__file__)) + '/test_data/Headshot_300_300.jpg'
         )
 
         self.assertEqual(
@@ -378,7 +383,6 @@ class TestUserGrid(TestCase):
         :return:
         """
         def request_match(request):
-            test = request.body
             return (
                 request.body ==
                 'grant_type=password&username=foo&password=bar')
@@ -646,3 +650,96 @@ class TestUserGrid(TestCase):
             'Unable to authenticate due to expired access token'
         )
 
+    def test_it_should_generate_over_all_entities(self, mock):
+        """
+        Ensures that collection entities acts as a generator
+        :param mock:
+        :return:
+        """
+        page_one_response = read_json_file(
+            'get_entities_response.json'
+        )
+
+        page_two_response = read_json_file(
+            'get_entities_response_page_two.json'
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/users",
+            json=page_one_response
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/users"
+            "?cursor=LTU2ODc0MzQzOkhGOWVtalNoRWVhdmdvLTNqcmpZVWc",
+            json=page_two_response
+        )
+
+        expected_user_ids = [
+            '5dc2e4ba-2f33-11e6-9880-47e38a0eed23',
+            '69361b5a-2f33-11e6-9d6f-c7a4ebfb263a',
+            '75ad7b8a-2f33-11e6-8d91-25e5758e7b14',
+            '5dc2e4ba-2f33-11e6-9880-47e38a0eed23',
+            '69361b5a-2f33-11e6-9d6f-c7a4ebfb263a',
+            '5dc2e4ba-2f33-66e6-9880-47e38a0eed23',
+            '69361b5a-7f33-11e6-9d6f-c7a4ebfb763a',
+            '75ad7b8a-2f88-11e6-8d91-25e5758e7b14',
+            '5dc2e9ba-2f33-11e6-9880-97e38a0eed23',
+            '6936110a-2f33-11e6-9d6f-c7a4ebfb263a',
+            "6936111a-2f33-11e6-9d6f-c7a4ebfb263a"
+        ]
+
+        actual_user_ids = []
+        for user in self.user_grid.collect_entities('/users'):
+            actual_user_ids.append(user['uuid'])
+
+        self.assertEqual(
+            expected_user_ids,
+            actual_user_ids,
+            'UserGrid get_entities did not generate entities'
+        )
+
+    def test_it_should_process_entities(self, mock):
+        """
+
+        :param mock:
+        :return:
+        """
+
+        page_one_response = read_json_file(
+            'get_entities_response.json'
+        )
+
+        page_two_response = read_json_file(
+            'get_entities_response_page_two.json'
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/users",
+            json=page_one_response
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/users"
+            "?cursor=LTU2ODc0MzQzOkhGOWVtalNoRWVhdmdvLTNqcmpZVWc",
+            json=page_two_response
+        )
+
+        expected_calls = []
+        for entity in page_one_response['entities']:
+            expected_calls.append(call(entity))
+
+        for entity in page_two_response['entities']:
+            expected_calls.append(call(entity))
+
+        mock = Mock(name='process_test')
+        self.user_grid.process_entities('/users', method=mock)
+        self.assertEqual(
+            expected_calls,
+            mock.mock_calls,
+            'UserGrid get_entities did not process entities'
+        )

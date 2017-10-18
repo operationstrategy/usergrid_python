@@ -3,6 +3,7 @@ Test module
 """
 import json
 import os
+import logging
 
 
 def read_json_file(file_name):

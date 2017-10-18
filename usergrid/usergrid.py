@@ -7,9 +7,10 @@ import warnings
 import time
 import requests
 
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
+
 
 # pylint: disable=too-many-public-methods
 # pylint: disable=too-many-instance-attributes
@@ -113,13 +114,14 @@ class UserGrid(object):
 
     def login(self, **kwargs):
         """
+        Login to UG
 
-        :param superuser:
-        :param username:
-        :param password:
-        :param client_id:
-        :param client_secret:
-        :param ttl:
+        :param str superuser: name for the super admin
+        :param str username: user name to autheticate with
+        :param str password: password for super/user name
+        :param str client_id: id for client_grant
+        :param str client_secret: secret for client_grant
+        :param int ttl: Time in seconds for the auth token to exist
         :return:
         """
         client_id = kwargs.pop('client_id', self._client_id)
@@ -175,24 +177,6 @@ class UserGrid(object):
         if user_name:
             self._me = login_json['user']
 
-    def set_last_response(self, response):
-        """
-        Local storage for the last response made
-
-        :param response:
-        :return:
-        """
-        self._last_response = response
-
-    def reconnect(self):
-        """
-        Login again
-
-        :return:
-        """
-        warnings.warn(DeprecationWarning)
-        self.login()
-
     @property
     def std_headers(self):
         """
@@ -240,18 +224,22 @@ class UserGrid(object):
         """
         cursor = None
 
-        if not limit or limit > 100:
-            limit = 100
+        if not limit or limit > 1000:
+            limit = 1000
 
-        while cursor is not None:
+        while True:
             page_entities, cursor = self.get_entities(
                 endpoint,
                 ql=ql,
-                limit=limit
+                limit=limit,
+                cursor=cursor
             )
 
             for entity in page_entities:
                 yield entity
+
+            if cursor is None:
+                break
 
     def process_entities(self, endpoint, method, ql=None, limit=None):  # pylint: disable=invalid-name
         """
@@ -266,6 +254,7 @@ class UserGrid(object):
         :param int limit:
         :return:
         """
+        assert callable(method)
         for entity in self.collect_entities(endpoint, ql, limit):
             method(entity)
 
@@ -303,6 +292,7 @@ class UserGrid(object):
             if 'entities' in response:
                 entities = response['entities']
 
+            # FIXME this seems impossible reach
             if 'list' in response:
                 entities = response['list']
 

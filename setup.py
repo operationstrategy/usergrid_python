@@ -11,7 +11,10 @@ setup(
     author_email='chris.s@bigmirrorlabs.com',
     packages=find_packages(exclude=['tests']),
     package_dir={
-        'usergird': 'usergrid'
+        'usergrid': 'usergrid'
     },
+    install_requires=[
+        'requests'
+    ],
     include_package_data=True
 )

@@ -1,0 +1,27 @@
+{
+  "action": "get",
+  "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+  "params": {},
+  "path": "/users",
+  "uri": "http://localhost:8080/sxm/orange/users",
+  "entities": [
+    {
+      "uuid": "6936111a-2f33-11e6-9d6f-c7a4ebfb263a",
+      "type": "user",
+      "name": "Demo 11",
+      "created": 1461111808113637,
+      "modified": 111011314472000,
+      "username": "demo11",
+      "email": "demo11@bigmirrorlabs.com",
+      "activated": true,
+      "picture": "723d8bb4-9893-11e7-8ff7-372b4b7d110f11",
+      "formId": "6936111a-2f33-11e6-9d6f-c7a4ebfb263a",
+      "metadata": {}
+    }
+  ],
+  "timestamp": 1508207026587,
+  "duration": 93,
+  "organization": "sxm",
+  "applicationName": "orange",
+  "count": 1
+}
