@@ -18,23 +18,20 @@ class UserGrid(object):
     """
     Class wrapping UG calls easier
     """
-    _client_id = None
-
-    _client_secret = None
-
-    _app_endpoint = None
-
-    _access_token = None
-
-    _auto_reconnect = False
-
-    _last_login_info = {}
-
-    _me = None
-
-    _last_response = None
-
-    _default_timeout = 20
+    __slots__ = (
+        '_client_id',
+        '_client_secret',
+        '_use_compression',
+        '_auto_reconnect',
+        '_app_endpoint',
+        '_management_endpoint',
+        '_access_token',
+        '_token_expires',
+        '_last_login_info',
+        '_default_timeout',
+        '_last_response',
+        '_me'
+    )
 
     def __init__(self, **kwargs):
         """
@@ -48,6 +45,7 @@ class UserGrid(object):
         :param boolean autoreconnect:
         :param boolean use_compression:
         :param boolean use_ssl:
+        :param int default_timeout:
         """
         host = kwargs.pop('host', None)
         app = kwargs.pop('app', None)
@@ -78,6 +76,7 @@ class UserGrid(object):
         self._management_endpoint += "/management"
         self._access_token = None
         self._token_expires = None
+        self._default_timeout = kwargs.pop('default_timeout', 20)
 
     @property
     def me(self):  # pylint: disable=invalid-name
@@ -316,7 +315,9 @@ class UserGrid(object):
         :rtype dict | None:
         :return:
         """
-        entities, cursor = self.get_entities(endpoint, ql=ql, limit=1)  # pylint: disable=unused-variable
+        entities, cursor = self.get_entities(endpoint, ql=ql,
+                                             limit=1)  # pylint:
+        # disable=unused-variable
         entity = None
         if entities:
             entity = entities[0]
@@ -400,7 +401,7 @@ class UserGrid(object):
         """
         return self.update_entity(entity + '/' + entity_id, data)
 
-    def post_activity(self, endpoint, actor, verb, content, data=None):  #pylint: disable=too-many-arguments
+    def post_activity(self, endpoint, actor, verb, content, data=None):  # pylint: disable=too-many-arguments
         """
         Saves activity for an actor
 

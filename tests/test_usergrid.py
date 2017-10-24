@@ -11,7 +11,7 @@ import logging
 from unittest.mock import Mock
 from unittest.mock import call
 import os
-
+import json
 
 SESSION = requests.Session()
 ADAPTER = requests_mock.Adapter()
@@ -269,10 +269,15 @@ class TestUserGrid(TestCase):
         """
         # /users/me/activities
         def request_match(request):
-            return (
-                request.body ==
-                '{"actor": "manchuck", "verb": "put", "content":'
-                ' "updated", "foo": "bar"}')
+            expected = {
+                "actor": "manchuck",
+                "verb": "put",
+                "content": "updated",
+                "foo": "bar"
+            }
+
+            actual = json.loads(request.body)
+            return expected == actual
 
         post_response = read_json_file('post_response.json')
         mock.register_uri(
@@ -358,9 +363,16 @@ class TestUserGrid(TestCase):
         :return:
         """
         def request_match(request):
-            return (
-                request.body ==
-                'grant_type=client_credentials&client_id=foo&client_secret=bar')
+            if 'client_secret=bar' not in request.body:
+                return False
+
+            if 'client_id=foo' not in request.body:
+                return False
+
+            if 'grant_type=client_credentials' not in request.body:
+                return False
+
+            return True
 
         post_response = read_json_file('grant_auth_response.json')
         mock.register_uri(
@@ -383,9 +395,16 @@ class TestUserGrid(TestCase):
         :return:
         """
         def request_match(request):
-            return (
-                request.body ==
-                'grant_type=password&username=foo&password=bar')
+            if 'grant_type=password' not in request.body:
+                return False
+
+            if 'username=foo' not in request.body:
+                return False
+
+            if 'password=bar' not in request.body:
+                return False
+
+            return True
 
         post_response = read_json_file('password_auth_response.json')
         mock.register_uri(
@@ -463,9 +482,16 @@ class TestUserGrid(TestCase):
         :return:
         """
         def request_match(request):
-            return (
-                request.body ==
-                'grant_type=client_credentials&client_id=foo&client_secret=bar')
+            if 'grant_type=client_credentials' not in request.body:
+                return False
+
+            if 'client_id=foo' not in request.body:
+                return False
+
+            if 'client_secret=bar' not in request.body:
+                return False
+
+            return True
 
         post_response = read_json_file('grant_auth_response.json')
         mock.register_uri(
