@@ -1,0 +1,65 @@
+{
+    "action": "get",
+    "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+    "params": {},
+    "path": "/presegmentedaudios/foo/connecting/owns",
+    "uri": "http://localhost:8080/sxm/orange/presegmentedaudios/foo/connecting/owns",
+    "entities": [
+
+        {
+            "uuid": "fb548ff2-8ef8-4551-86ec-4bffebf56a74",
+            "type": "user",
+            "name": "Nicholas Haurus",
+            "created": 1465915047696,
+            "modified": 1508773815494,
+            "username": "nick_123",
+            "email": "nick123@haurus.com",
+            "activated": true,
+            "picture": "653e16aa-17a5-11e7-b503-8d9d27b9bc9a",
+            "formId": "8464a10a-323d-11e6-98b5-d5ade40089b2",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_1x.jpg",
+                "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_3x.jpg",
+                "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg",
+                "last_processed": 1491138483829
+            },
+            "metadata": {
+                "connecting": {
+                    "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/connecting/follows"
+                },
+                "path": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2",
+                "sets": {
+                    "rolenames": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+                    "permissions": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/permissions"
+                },
+                "connections": {
+                    "flags": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/flags",
+                    "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/follows",
+                    "owns": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/owns",
+                    "profilepicture": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/profilepicture",
+                    "upvote": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/upvote"
+                },
+                "collections": {
+                    "activities": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/activities",
+                    "devices": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/devices",
+                    "feed": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/feed",
+                    "groups": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/groups",
+                    "roles": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+                    "following": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/following",
+                    "followers": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/followers"
+                }
+            },
+            "num_following": 7,
+            "organizations": [
+                "e8ce585a-9fdf-11e7-8053-77e933c5d735"
+            ],
+            "user-image": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg"
+        }
+    ],
+    "timestamp": 1509035113923,
+    "duration": 70,
+    "organization": "sxm",
+    "applicationName": "orange",
+    "count": 1
+}

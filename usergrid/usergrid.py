@@ -315,9 +315,7 @@ class UserGrid(object):
         :rtype dict | None:
         :return:
         """
-        entities, cursor = self.get_entities(endpoint, ql=ql,
-                                             limit=1)  # pylint:
-        # disable=unused-variable
+        entities, cursor = self.get_entities(endpoint, ql=ql, limit=1)  # pylint: disable=unused-variable
         entity = None
         if entities:
             entity = entities[0]
@@ -592,6 +590,54 @@ class UserGrid(object):
         except Exception as request_exception:
             logger.exception(request_exception)
             raise
+
+    @staticmethod
+    def get_relationship_keys(entity):
+        """
+        returns list of relationship keys for an entity
+        :param entity:
+        :return: list
+        """
+        keys = []
+        if 'metadata' not in entity:
+            return keys
+
+        for relationship_type in ['connections', 'connecting']:
+            if relationship_type in entity['metadata']:
+                keys += ["/{}/{}".format(relationship_type, x) for x in
+                         entity['metadata'][relationship_type].keys()]
+        return keys
+
+    def archive_entity(self, entity_type, entity_id):
+        """
+        archives an entity to its corresponding archive table
+        and returns archived entity given its type and id
+        :param str entity_type:
+        :param str entity_id:
+        :return: dict
+        """
+        real_entity = self.get_entity_by_id(entity_type, entity_id)
+        keys = self.get_relationship_keys(real_entity)
+
+        for key in keys:
+            values = key.strip("/").split("/")
+            key_to_save = "__{}_{}".format(values[0], values[1])
+            for gen_entity in self.collect_entities(
+                    "{}/{}{}".format(entity_type, entity_id, key)
+            ):
+
+                if key_to_save not in real_entity:
+                    real_entity[key_to_save] = [gen_entity]
+                else:
+                    real_entity[key_to_save].append(gen_entity)
+
+        archived_entity = self.post_entity(
+            '/archived_{}'.format(entity_type),
+            real_entity
+        )
+
+        self.delete_entity_by_id(entity_type, entity_id)
+        return archived_entity
 
 
 class UserGridException(BaseException):
