@@ -2,8 +2,8 @@
     "action": "get",
     "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
     "params": {},
-    "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting",
-    "uri": "http://localhost:8080/sxm/orange/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting",
+    "path": "/presegmentedaudios/foo/connecting",
+    "uri": "http://localhost:8080/sxm/orange/presegmentedaudios/foo/connecting",
     "entities": [
         {
             "uuid": "3259a5aa-aee1-11e7-8397-d74445e8a6c9",
@@ -14,11 +14,11 @@
             "image": "http://static.libsyn.com/p/assets/6/9/f/b/69fb1b4623455674/jayson-cover-art.jpg",
             "metadata": {
                 "connecting": {
-                    "owns": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/connecting/owns"
+                    "owns": "/presegmentedaudios/foo/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/connecting/owns"
                 },
-                "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9",
+                "path": "/presegmentedaudios/foo/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9",
                 "connections": {
-                    "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/has"
+                    "has": "/presegmentedaudios/foo/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/has"
                 }
             },
             "new": false,

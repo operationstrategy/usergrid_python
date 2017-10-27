@@ -591,23 +591,6 @@ class UserGrid(object):
             logger.exception(request_exception)
             raise
 
-    @staticmethod
-    def get_relationship_keys(entity):
-        """
-        returns list of relationship keys for an entity
-        :param entity:
-        :return: list
-        """
-        keys = []
-        if 'metadata' not in entity:
-            return keys
-
-        for relationship_type in ['connections', 'connecting']:
-            if relationship_type in entity['metadata']:
-                keys += ["/{}/{}".format(relationship_type, x) for x in
-                         entity['metadata'][relationship_type].keys()]
-        return keys
-
     def archive_entity(self, entity_type, entity_id):
         """
         archives an entity to its corresponding archive table
@@ -617,27 +600,63 @@ class UserGrid(object):
         :return: dict
         """
         real_entity = self.get_entity_by_id(entity_type, entity_id)
-        keys = self.get_relationship_keys(real_entity)
+        self._add_related_entities_to_entity(
+            entity=real_entity,
+            connection_type='connecting'
+        )
 
-        for key in keys:
-            values = key.strip("/").split("/")
-            key_to_save = "__{}_{}".format(values[0], values[1])
-            for gen_entity in self.collect_entities(
-                    "{}/{}{}".format(entity_type, entity_id, key)
-            ):
-
-                if key_to_save not in real_entity:
-                    real_entity[key_to_save] = [gen_entity]
-                else:
-                    real_entity[key_to_save].append(gen_entity)
+        self._add_related_entities_to_entity(
+            entity=real_entity,
+            connection_type='connections'
+        )
 
         archived_entity = self.post_entity(
-            '/archived_{}'.format(entity_type),
+            '/archived_%s' % entity_type,
             real_entity
         )
 
         self.delete_entity_by_id(entity_type, entity_id)
         return archived_entity
+
+    def _add_related_entities_to_entity(self, entity, connection_type):
+        """
+        Finds all connecting entities and adds to the entity
+
+        Mutates the entity
+
+        :param entity:
+        :param connection_type:
+        :return:
+        """
+        if 'metadata' not in entity:
+            return
+
+        if connection_type not in entity['metadata']:
+            return
+
+        key_prefix = '__' + connection_type + '_'
+        for key in entity['metadata'][connection_type]:
+            self._add_related_entities(
+                entity=entity,
+                endpoint=entity['metadata'][connection_type][key],
+                key=(key_prefix + key)
+            )
+
+    def _add_related_entities(self, entity, endpoint, key):
+        """
+        Adds entities to the entity from matching endpoint
+
+        Mutates the entity
+
+        :param entity:
+        :return:
+        """
+
+        for connecting_entity in self.collect_entities(endpoint):
+            if key not in entity:
+                entity[key] = [connecting_entity]
+            else:
+                entity[key].append(connecting_entity)
 
 
 class UserGridException(BaseException):

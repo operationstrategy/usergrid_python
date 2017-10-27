@@ -6,7 +6,7 @@
     "uri": "http://localhost:8080/sxm/orange/presegmentedaudios",
     "entities": [
         {
-            "uuid": "93e4863a-b9a1-11e7-a00c-a7fca56f1df9",
+            "uuid": "foo",
             "type": "presegmentedaudio",
             "name": "rss_tmpsccfv4dx1508948900_1508948905.2695768",
             "created": 1508948928019,
@@ -27,14 +27,14 @@
             "id": "dcb88fa68e56e665df8711c8189343e7",
             "metadata": {
                 "connecting": {
-                    "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/has",
-                    "owns": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/owns"
+                    "has": "/presegmentedaudios/foo/connecting/has",
+                    "owns": "/presegmentedaudios/foo/connecting/owns"
 
                 },
-                "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9",
+                "path": "/presegmentedaudios/foo",
                 "connections": {
 
-                    "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/has"
+                    "has": "/presegmentedaudios/foo/has"
                 }
             },
             "order": true,

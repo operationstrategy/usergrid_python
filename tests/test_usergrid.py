@@ -793,8 +793,7 @@ class TestUserGrid(TestCase):
 
         mock.register_uri(
             "GET",
-            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo/"
-            "connections/has",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo/has",
             json=presegmented_has_response
         )
 
@@ -846,6 +845,7 @@ class TestUserGrid(TestCase):
             "presegmentedaudios",
             "foo"
         )
+
         self.assertEqual(
             archived_presegmented_post_response['entities'][0],
             archived_entity, "Usergrid didn't archive entity"
@@ -916,8 +916,7 @@ class TestUserGrid(TestCase):
 
         mock.register_uri(
             "GET",
-            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo/"
-            "connections/has",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo/has",
             json=presegmented_has_response_not_found,
             status_code=404
         )

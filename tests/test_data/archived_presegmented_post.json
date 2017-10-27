@@ -6,49 +6,528 @@
   "uri": "http://localhost:8080/sxm/orange/archive_presegmentedaudios",
   "entities": [
     {
+  "org_id": "777c125a-b033-11e7-9166-31cfb1b65684",
+  "uuid": "93e4863a-b9a1-11e7-a00c-a7fca56f1df9",
+  "requested_full_story": true,
+  "updated": "Tue, 24 Oct 2017 17:45:40 +0000",
+  "description": "\u201cTo scale, it\u2019s not what you start doing, it\u2019s what you stop doing\u2026 the only way to scale is to give things up.\u201d - Jim Estill In this episode my good friend Saud Juman and I have the privilege of interviewing Jim Estill, one of Canada\u2019s most eccentric and notorious entrepreneurs. This man has invested in over 150 businesses, boasts 99 consecutive quarters of profit, and successfully scaled his first business, which he started out of the trunk of his car, from zero to $2 Billion dollars. In the last couple of years Jim became famous for giving 1.5 Million dollars of his own money to secretly launch a resettlement program that brought 58 Syrian families into Ontario and provided them with housing, language training, and employment. He coordinated the entire program and didn\u2019t even tell his own wife until it was ready for launch. In this episode the three of us talk about the struggle of giving up control in order to scale a business, what to look for when you\u2019re considering investments, understanding your company\u2019s niche, finding your micro competitive advantages, and why Jim does not give money to his kids. People mentioned in this episode:  Zig Ziglar Robert B. Cialdini Al Ries & Jack Trout Malcolm Gladwell Daniel Pink  Select Links and References:  https://torontolife.com/city/life/jim-estill-the-man-who-saved-200-syrian-refugees/ Time Leadership; Lessons from a CEO\u00a0http://amzn.to/2z4UGp4\u00a0\u00a0 Think and Grow Rich\u00a0http://amzn.to/2a2PSmU\u00a0 Influence: The Psychology of Persuasion\u00a0http://amzn.to/2cxgptc\u00a0 22 Immutable Laws of Marketing\u00a0http://amzn.to/2zBfz7I\u00a0 Tipping Point: How Little Things Can Make a Big Difference\u00a0http://amzn.to/2xklMny\u00a0 Drive: The Surprising Truth About What Motivates Us\u00a0http://amzn.to/2laOp50\u00a0 The Five Minute Journal  https://www.intelligentchange.com/products/the-five-minute-journal \u00a0",
+  "audio_link": "http://traffic.libsyn.com/clean/mastermindtalks/Master_of_Scale_Jim_Estills_99_Consecutive_Quarters_of_Profit.mp3?dest-id=226001",
   "owner": {
-    "picture": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/4c4b728a-aacd-11e7-9b6f-ade4487ec534/4c4b728a-aacd-11e7-9b6f-ade4487ec534_2x.jpg",
-    "email": "communitymade@siriusxm.com",
-    "username": "communitymade",
     "name": "Community Made",
-    "uuid": "4fa2daea-aacd-11e7-8e45-3d670b890262"
+    "username": "communitymade",
+    "uuid": "4fa2daea-aacd-11e7-8e45-3d670b890262",
+    "picture": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/4c4b728a-aacd-11e7-9b6f-ade4487ec534/4c4b728a-aacd-11e7-9b6f-ade4487ec534_2x.jpg",
+    "email": "communitymade@siriusxm.com"
   },
-  "full_story": true,
+  "metadata": {
+    "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9",
+    "connecting": {
+      "owns": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/owns",
+      "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/has"
+    },
+    "connections": {
+      "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/has"
+    }
+  },
+  "stt": {
+    "callminer_start_time": "2017-10-25T00:31:00",
+    "status": {
+      "code": 2
+    },
+    "callminer_final_time": "2017-10-25T02:39:43"
+  },
+  "id": "dcb88fa68e56e665df8711c8189343e7",
+  "duration": 5525,
   "__connecting_has": [
     {
-      "created": 1507766789370,
-      "url": "http://mastermindtalks.libsyn.com/rss",
+      "modified": 1508948957052,
+      "new": false,
       "uuid": "3259a5aa-aee1-11e7-8397-d74445e8a6c9",
-      "user_uuid": "4fa2daea-aacd-11e7-8e45-3d670b890262",
+      "title": "Community Made",
+      "updated": "Mon, 09 Oct 2017 09:02:56 +0000",
+      "url": "http://mastermindtalks.libsyn.com/rss",
+      "status": "processed",
+      "description": "Self-Made is a myth. The truth is no one ever does it alone. We need other people to lean on and to learn from. The Community Made Podcast is an all access pass to lessons, learnings, and key insights from the world\u2019s most successful entrepreneurs including Gary Vaynerchuk, Naveen Jain, Tim Ferris, and Shep Gordon. People who are not only winning in business, but winning in at life as well. They say that an entrepreneur is someone who goes from working in their business to on their business. But there\u2019s another level of entrepreneur who goes from working on their business to working on themselves. That\u2019s who this podcast is for. My philosophy is that if I am transparent about my story, you can leverage my wins while at the same time avoiding my losses. Because in the words of Charlie Munger, \"everyone learns from experience, but I\u2019d rather learn from the experiences of others.\"",
+      "type": "contentfeed",
       "image": "http://static.libsyn.com/p/assets/6/9/f/b/69fb1b4623455674/jayson-cover-art.jpg",
       "metadata": {
+        "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9",
         "connecting": {
           "owns": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/connecting/owns"
         },
-        "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9",
         "connections": {
           "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/has"
         }
       },
-      "type": "contentfeed",
-      "path_uuid": "7587c86a-aacd-11e7-8d50-fd9e556ec1ea",
-      "server_modified": "Wed, 25 Oct 2017 15:28:36 GMT",
-      "modified": 1508948957052,
-      "rss": true,
-      "new": false,
-      "description": "Self-Made is a myth. The truth is no one ever does it alone. We need other people to lean on and to learn from. The Community Made Podcast is an all access pass to lessons, learnings, and key insights from the world\u2019s most successful entrepreneurs including Gary Vaynerchuk, Naveen Jain, Tim Ferris, and Shep Gordon. People who are not only winning in business, but winning in at life as well. They say that an entrepreneur is someone who goes from working in their business to on their business. But there\u2019s another level of entrepreneur who goes from working on their business to working on themselves. That\u2019s who this podcast is for. My philosophy is that if I am transparent about my story, you can leverage my wins while at the same time avoiding my losses. Because in the words of Charlie Munger, \"everyone learns from experience, but I\u2019d rather learn from the experiences of others.\"",
       "org_id": "777c125a-b033-11e7-9166-31cfb1b65684",
-      "status": "processed",
-      "title": "Community Made",
-      "updated": "Mon, 09 Oct 2017 09:02:56 +0000"
+      "path_uuid": "7587c86a-aacd-11e7-8d50-fd9e556ec1ea",
+      "user_uuid": "4fa2daea-aacd-11e7-8e45-3d670b890262",
+      "rss": true,
+      "created": 1507766789370,
+      "server_modified": "Wed, 25 Oct 2017 15:28:36 GMT"
     }
   ],
-  "partition_status": {},
-  "type": "archive_presegmentedaudios",
-  "requested_full_story": true,
-  "org_id": "777c125a-b033-11e7-9166-31cfb1b65684",
   "modified": 1508957540848,
-  "created": 1508948928019,
+  "audio": "86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
+  "fullstory": {
+    "modified": 1508948928486,
+    "rel_reason": "Full Story",
+    "uuid": "942bc86a-b9a1-11e7-aa55-8102b9ac0d17",
+    "title": "S1E8 - Master of Scale: Jim Estill\u2019s 99 Consecutive Quarters of Profit",
+    "path_id": "7587c86a-aacd-11e7-8d50-fd9e556ec1ea",
+    "created": 1508948928486
+  },
+  "full_story": true,
+  "type": "archive_presegmentedaudios",
+  "partition_status": {},
+  "__connecting_owns": [
+    {
+      "modified": 1506885002971,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_3x.jpg",
+        "last_processed": 1487093716897,
+        "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_1x.jpg",
+        "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_2x.jpg"
+      },
+      "num_following": 7,
+      "uuid": "3532f94a-2f24-11e6-87a5-754329b2b5c9",
+      "type": "user",
+      "activated": true,
+      "email": "chris.smith@bigmirrorlabs.com",
+      "username": "chris.s",
+      "metadata": {
+        "path": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9",
+        "collections": {
+          "groups": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/groups",
+          "roles": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/roles",
+          "devices": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/devices",
+          "following": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/following",
+          "followers": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/followers",
+          "activities": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/activities",
+          "feed": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/feed"
+        },
+        "connections": {
+          "recommends": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/recommends",
+          "notliked": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/notliked",
+          "curates": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/curates",
+          "creates": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/creates",
+          "likes": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/likes",
+          "upvote": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/upvote",
+          "owns": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/owns",
+          "profilepicture": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/profilepicture",
+          "follows": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/follows"
+        },
+        "sets": {
+          "rolenames": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/roles",
+          "permissions": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/permissions"
+        }
+      },
+      "picture": "f14f896a-f2db-11e6-a274-af9f74bc5069",
+      "name": "Christopher Smith",
+      "created": 1465574323924,
+      "notes": "no notes"
+    },
+    {
+      "name": "Demo 1",
+      "modified": 1479175610135,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_3x.jpg",
+        "last_processed": 1476852272561,
+        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_1x.jpg",
+        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_2x.jpg"
+      },
+      "username": "demo1",
+      "picture": "ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1",
+      "uuid": "46420c3a-2f33-11e6-a5d4-7940dd15db24",
+      "type": "user",
+      "activated": true,
+      "created": 1465580794995,
+      "email": "demo1@bigmirrorlabs.com",
+      "metadata": {
+        "path": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24",
+        "collections": {
+          "groups": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/groups",
+          "roles": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/roles",
+          "devices": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/devices",
+          "following": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/following",
+          "followers": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/followers",
+          "activities": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/activities",
+          "feed": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/feed"
+        },
+        "connections": {
+          "curates": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/curates",
+          "owns": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/owns",
+          "profilepicture": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/profilepicture",
+          "creates": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/creates"
+        },
+        "sets": {
+          "rolenames": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/roles",
+          "permissions": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/permissions"
+        }
+      }
+    },
+    {
+      "name": "Demo 2",
+      "modified": 1479176933753,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_3x.png",
+        "last_processed": 1468869777859,
+        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_1x.png",
+        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_2x.png"
+      },
+      "username": "demo2",
+      "picture": "4a78ab7a-4c47-11e6-89ed-ad1e06a25530",
+      "uuid": "5109998a-2f33-11e6-be2b-494ef5dda8f1",
+      "type": "user",
+      "activated": true,
+      "created": 1465580813080,
+      "email": "demo2@bigmirrorlabs.com",
+      "metadata": {
+        "path": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1",
+        "collections": {
+          "groups": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/groups",
+          "roles": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/roles",
+          "devices": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/devices",
+          "following": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/following",
+          "followers": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/followers",
+          "activities": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/activities",
+          "feed": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/feed"
+        },
+        "connections": {
+          "curates": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/curates",
+          "owns": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/owns",
+          "profilepicture": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/profilepicture"
+        },
+        "sets": {
+          "rolenames": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/roles",
+          "permissions": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/permissions"
+        }
+      }
+    },
+    {
+      "name": "Demo 3",
+      "modified": 1469027651205,
+      "username": "demo33",
+      "metadata": {
+        "path": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
+        "collections": {
+          "groups": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/groups",
+          "roles": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles",
+          "devices": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/devices",
+          "following": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/following",
+          "followers": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/followers",
+          "activities": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/activities",
+          "feed": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/feed"
+        },
+        "connections": {
+          "curates": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/curates"
+        },
+        "sets": {
+          "rolenames": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles",
+          "permissions": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/permissions"
+        }
+      },
+      "uuid": "5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
+      "type": "user",
+      "activated": true,
+      "created": 1465580834427,
+      "email": "demo33@bigmirrorlabs.com"
+    },
+    {
+      "name": "Demo 4",
+      "modified": 1479218737435,
+      "username": "demo4",
+      "picture": "http://www.gravatar.com/avatar/97113dd276bf63778f344b6355100728",
+      "uuid": "69361b5a-2f33-11e6-9d6f-c7a4ebfb263a",
+      "type": "user",
+      "activated": true,
+      "created": 1465580853637,
+      "email": "demo4@bigmirrorlabs.com",
+      "metadata": {
+        "path": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a",
+        "collections": {
+          "groups": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/groups",
+          "roles": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/roles",
+          "devices": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/devices",
+          "following": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/following",
+          "followers": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/followers",
+          "activities": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/activities",
+          "feed": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/feed"
+        },
+        "connections": {
+          "owns": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/owns"
+        },
+        "sets": {
+          "rolenames": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/roles",
+          "permissions": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/permissions"
+        }
+      }
+    },
+    {
+      "name": "Demo 5",
+      "modified": 1479218753152,
+      "username": "demo5",
+      "picture": "http://www.gravatar.com/avatar/38319a1f519df2e89ac01db5606c0ea7",
+      "uuid": "75ad7b8a-2f33-11e6-8d91-25e5758e7b14",
+      "type": "user",
+      "activated": true,
+      "created": 1465580874552,
+      "email": "demo5@bigmirrorlabs.com",
+      "metadata": {
+        "path": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14",
+        "collections": {
+          "groups": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/groups",
+          "roles": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/roles",
+          "devices": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/devices",
+          "following": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/following",
+          "followers": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/followers",
+          "activities": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/activities",
+          "feed": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/feed"
+        },
+        "connections": {
+          "owns": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/owns"
+        },
+        "sets": {
+          "rolenames": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/roles",
+          "permissions": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/permissions"
+        }
+      }
+    },
+    {
+      "modified": 1508872943787,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_3x.jpg",
+        "last_processed": 1468869819619,
+        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_1x.jpg",
+        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_2x.jpg"
+      },
+      "json": "{\n\t\"uuid\": \"655225da-3161-11e6-b4ba-737909b16a96\",\n\t\"type\": \"users\",\n\t\"name\": \"Patrick Corbett\",\n\t\"created\": 1465820506285,\n\t\"modified\": 1467138378687,\n\t\"username\": \"patrickc\",\n\t\"email\": \"patrick.c@bigmirrorlabs.com\",\n\t\"activated\": true,\n\t\"picture\": \"cd1dbd7a-3d5d-11e6-b6a2-f7e30c5301e5\",\n\t\"metadata\": {\n\t\t\"path\": \"/users/655225da-3161-11e6-b4ba-737909b16a96\",\n\t\t\"sets\": {\n\t\t\t\"rolenames\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/roles\",\n\t\t\t\"permissions\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/permissions\"\n\t\t},\n\t\t\"connections\": {\n\t\t\t\"curates\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/curates\",\n\t\t\t\"follows\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/follows\",\n\t\t\t\"owns\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/owns\"\n\t\t},\n\t\t\"collections\": {\n\t\t\t\"activities\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/activities\",\n\t\t\t\"devices\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/devices\",\n\t\t\t\"feed\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/feed\",\n\t\t\t\"groups\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/groups\",\n\t\t\t\"roles\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/roles\",\n\t\t\t\"following\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/following\",\n\t\t\t\"followers\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/followers\"\n\t\t}\n\t}\n}",
+      "num_following": 3,
+      "username": "patrickc",
+      "activated": true,
+      "email": "patrick.c@bigmirrorlabs.com",
+      "type": "user",
+      "metadata": {
+        "path": "/users/655225da-3161-11e6-b4ba-737909b16a96",
+        "collections": {
+          "groups": "/users/655225da-3161-11e6-b4ba-737909b16a96/groups",
+          "roles": "/users/655225da-3161-11e6-b4ba-737909b16a96/roles",
+          "devices": "/users/655225da-3161-11e6-b4ba-737909b16a96/devices",
+          "following": "/users/655225da-3161-11e6-b4ba-737909b16a96/following",
+          "followers": "/users/655225da-3161-11e6-b4ba-737909b16a96/followers",
+          "activities": "/users/655225da-3161-11e6-b4ba-737909b16a96/activities",
+          "feed": "/users/655225da-3161-11e6-b4ba-737909b16a96/feed"
+        },
+        "connecting": {
+          "owns": "/users/655225da-3161-11e6-b4ba-737909b16a96/connecting/owns"
+        },
+        "connections": {
+          "curates": "/users/655225da-3161-11e6-b4ba-737909b16a96/curates",
+          "owns": "/users/655225da-3161-11e6-b4ba-737909b16a96/owns",
+          "profilepicture": "/users/655225da-3161-11e6-b4ba-737909b16a96/profilepicture",
+          "likes": "/users/655225da-3161-11e6-b4ba-737909b16a96/likes",
+          "follows": "/users/655225da-3161-11e6-b4ba-737909b16a96/follows"
+        },
+        "sets": {
+          "rolenames": "/users/655225da-3161-11e6-b4ba-737909b16a96/roles",
+          "permissions": "/users/655225da-3161-11e6-b4ba-737909b16a96/permissions"
+        }
+      },
+      "picture": "b040f22a-4ad3-11e6-aa6c-1999c7367f59",
+      "name": "Patrick Corbett",
+      "uuid": "655225da-3161-11e6-b4ba-737909b16a96",
+      "created": 1465820506285
+    },
+    {
+      "modified": 1507068191081,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_3x.jpg",
+        "last_processed": 1471261438997,
+        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_1x.jpg",
+        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_2x.jpg"
+      },
+      "num_following": 0,
+      "uuid": "63f3f13a-3168-11e6-9c4c-fb20e0ac10aa",
+      "username": "OdinsRaven",
+      "activated": true,
+      "email": "kendoka90@aol.com",
+      "type": "user",
+      "metadata": {
+        "path": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa",
+        "collections": {
+          "groups": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/groups",
+          "roles": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/roles",
+          "devices": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/devices",
+          "following": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/following",
+          "followers": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/followers",
+          "activities": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/activities",
+          "feed": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/feed"
+        },
+        "connections": {
+          "curates": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/curates",
+          "owns": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/owns",
+          "profilepicture": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/profilepicture",
+          "creates": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/creates",
+          "follows": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/follows"
+        },
+        "sets": {
+          "rolenames": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/roles",
+          "permissions": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/permissions"
+        }
+      },
+      "picture": "8d67236a-62dd-11e6-9474-c9880b529a79",
+      "name": "Odin's Raven",
+      "organizations": [
+        "e8ce585a-9fdf-11e7-8053-77e933c5d735"
+      ],
+      "created": 1465823510467
+    },
+    {
+      "name": "Julie Ho",
+      "modified": 1468869906337,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_3x.jpg",
+        "last_processed": 1468869906222,
+        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_1x.jpg",
+        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_2x.jpg"
+      },
+      "username": "juliehoold",
+      "picture": "cebb527a-4882-11e6-9761-7fea2ea2cbee",
+      "uuid": "0229c13a-317e-11e6-ba8d-3f80ab4f857a",
+      "type": "user",
+      "activated": true,
+      "created": 1465832795331,
+      "email": "julie.ho@bigmirrorlabs.com",
+      "metadata": {
+        "path": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a",
+        "collections": {
+          "groups": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/groups",
+          "roles": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/roles",
+          "devices": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/devices",
+          "following": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/following",
+          "followers": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/followers",
+          "activities": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/activities",
+          "feed": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/feed"
+        },
+        "connections": {
+          "curates": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/curates",
+          "owns": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/owns",
+          "profilepicture": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/profilepicture"
+        },
+        "sets": {
+          "rolenames": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/roles",
+          "permissions": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/permissions"
+        }
+      }
+    },
+    {
+      "modified": 1508773815494,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_3x.jpg",
+        "last_processed": 1491138483829,
+        "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_1x.jpg",
+        "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg"
+      },
+      "num_following": 7,
+      "uuid": "8464a10a-323d-11e6-98b5-d5ade40089b2",
+      "username": "nick",
+      "activated": true,
+      "email": "nick@haurus.com",
+      "formId": "8464a10a-323d-11e6-98b5-d5ade40089b2",
+      "type": "user",
+      "user-image": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg",
+      "metadata": {
+        "path": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2",
+        "collections": {
+          "groups": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/groups",
+          "roles": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+          "devices": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/devices",
+          "following": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/following",
+          "followers": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/followers",
+          "activities": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/activities",
+          "feed": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/feed"
+        },
+        "connecting": {
+          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/connecting/follows"
+        },
+        "connections": {
+          "profilepicture": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/profilepicture",
+          "owns": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/owns",
+          "upvote": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/upvote",
+          "flags": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/flags",
+          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/follows"
+        },
+        "sets": {
+          "rolenames": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+          "permissions": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/permissions"
+        }
+      },
+      "picture": "653e16aa-17a5-11e7-b503-8d9d27b9bc9a",
+      "name": "Nicholas Haurus",
+      "organizations": [
+        "e8ce585a-9fdf-11e7-8053-77e933c5d735"
+      ],
+      "created": 1465915047696
+    },
+    {
+      "modified": 1508773815494,
+      "image_cdn": {
+        "status": "complete",
+        "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_3x.jpg",
+        "last_processed": 1491138483829,
+        "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_1x.jpg",
+        "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg"
+      },
+      "num_following": 7,
+      "uuid": "fb548ff2-8ef8-4551-86ec-4bffebf56a74",
+      "username": "nick_123",
+      "activated": true,
+      "email": "nick123@haurus.com",
+      "formId": "8464a10a-323d-11e6-98b5-d5ade40089b2",
+      "type": "user",
+      "user-image": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg",
+      "metadata": {
+        "path": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2",
+        "collections": {
+          "groups": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/groups",
+          "roles": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+          "devices": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/devices",
+          "following": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/following",
+          "followers": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/followers",
+          "activities": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/activities",
+          "feed": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/feed"
+        },
+        "connecting": {
+          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/connecting/follows"
+        },
+        "connections": {
+          "profilepicture": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/profilepicture",
+          "owns": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/owns",
+          "upvote": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/upvote",
+          "flags": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/flags",
+          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/follows"
+        },
+        "sets": {
+          "rolenames": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+          "permissions": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/permissions"
+        }
+      },
+      "picture": "653e16aa-17a5-11e7-b503-8d9d27b9bc9a",
+      "name": "Nicholas Haurus",
+      "organizations": [
+        "e8ce585a-9fdf-11e7-8053-77e933c5d735"
+      ],
+      "created": 1465915047696
+    }
+  ],
+  "title": "S1E8 - Master of Scale: Jim Estill\u2019s 99 Consecutive Quarters of Profit",
   "segmentationProgress": [
     "2-RSS-sent to stt status_code=200",
     "3-STT-file received for processing",
@@ -61,516 +540,39 @@
     "10-Segmenter-Read transcript from s3",
     "11-Segmenter-Processing Complete"
   ],
-  "description": "\u201cTo scale, it\u2019s not what you start doing, it\u2019s what you stop doing\u2026 the only way to scale is to give things up.\u201d - Jim Estill In this episode my good friend Saud Juman and I have the privilege of interviewing Jim Estill, one of Canada\u2019s most eccentric and notorious entrepreneurs. This man has invested in over 150 businesses, boasts 99 consecutive quarters of profit, and successfully scaled his first business, which he started out of the trunk of his car, from zero to $2 Billion dollars. In the last couple of years Jim became famous for giving 1.5 Million dollars of his own money to secretly launch a resettlement program that brought 58 Syrian families into Ontario and provided them with housing, language training, and employment. He coordinated the entire program and didn\u2019t even tell his own wife until it was ready for launch. In this episode the three of us talk about the struggle of giving up control in order to scale a business, what to look for when you\u2019re considering investments, understanding your company\u2019s niche, finding your micro competitive advantages, and why Jim does not give money to his kids. People mentioned in this episode:  Zig Ziglar Robert B. Cialdini Al Ries & Jack Trout Malcolm Gladwell Daniel Pink  Select Links and References:  https://torontolife.com/city/life/jim-estill-the-man-who-saved-200-syrian-refugees/ Time Leadership; Lessons from a CEO\u00a0http://amzn.to/2z4UGp4\u00a0\u00a0 Think and Grow Rich\u00a0http://amzn.to/2a2PSmU\u00a0 Influence: The Psychology of Persuasion\u00a0http://amzn.to/2cxgptc\u00a0 22 Immutable Laws of Marketing\u00a0http://amzn.to/2zBfz7I\u00a0 Tipping Point: How Little Things Can Make a Big Difference\u00a0http://amzn.to/2xklMny\u00a0 Drive: The Surprising Truth About What Motivates Us\u00a0http://amzn.to/2laOp50\u00a0 The Five Minute Journal  https://www.intelligentchange.com/products/the-five-minute-journal \u00a0",
+  "order": true,
+  "created": 1508948928019,
   "__connections_has": [
     {
-      "modified": 1508948927920,
-      "uuid": "86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
       "name": "rss_tmpsccfv4dx1508948900_1508948905.0719638",
-      "file-metadata": {
-        "last-modified": 1508948927902,
-        "content-length": 176793008,
-        "etag": "wB9RxSiv2b",
-        "content-type": "audio/mpeg"
-      },
+      "modified": 1508948927920,
       "metadata": {
+        "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/has/86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
         "connecting": {
           "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/has/86532a8a-b9a1-11e7-a7cf-675ce7483d8b/connecting/has"
-        },
-        "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/has/86532a8a-b9a1-11e7-a7cf-675ce7483d8b"
+        }
       },
       "filename": "rss_tmpsccfv4dx1508948900.mp3",
       "type": "presegmentedaudio_clip",
-      "created": 1508948905256
+      "uuid": "86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
+      "created": 1508948905256,
+      "file-metadata": {
+        "last-modified": 1508948927902,
+        "etag": "wB9RxSiv2b",
+        "content-length": 176793008,
+        "content-type": "audio/mpeg"
+      }
     }
   ],
+  "name": "rss_tmpsccfv4dx1508948900_1508948905.2695768",
   "segmentation": {
     "status": {
       "code": 2
     }
-  },
-  "title": "S1E8 - Master of Scale: Jim Estill\u2019s 99 Consecutive Quarters of Profit",
-  "uuid": "93e4863a-b9a1-11e7-a00c-a7fca56f1df9",
-  "id": "dcb88fa68e56e665df8711c8189343e7",
-  "duration": 5525,
-  "name": "rss_tmpsccfv4dx1508948900_1508948905.2695768",
-  "fullstory": {
-    "rel_reason": "Full Story",
-    "modified": 1508948928486,
-    "uuid": "942bc86a-b9a1-11e7-aa55-8102b9ac0d17",
-    "path_id": "7587c86a-aacd-11e7-8d50-fd9e556ec1ea",
-    "title": "S1E8 - Master of Scale: Jim Estill\u2019s 99 Consecutive Quarters of Profit",
-    "created": 1508948928486
-  },
-  "__connecting_owns": [
-    {
-      "username": "chris.s",
-      "name": "Christopher Smith",
-      "notes": "no notes",
-      "type": "user",
-      "num_following": 7,
-      "metadata": {
-        "path": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9",
-        "sets": {
-          "permissions": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/permissions",
-          "rolenames": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/roles"
-        },
-        "connections": {
-          "notliked": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/notliked",
-          "recommends": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/recommends",
-          "follows": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/follows",
-          "creates": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/creates",
-          "curates": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/curates",
-          "profilepicture": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/profilepicture",
-          "likes": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/likes",
-          "owns": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/owns",
-          "upvote": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/upvote"
-        },
-        "collections": {
-          "feed": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/feed",
-          "followers": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/followers",
-          "roles": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/roles",
-          "following": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/following",
-          "groups": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/groups",
-          "devices": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/devices",
-          "activities": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/activities"
-        }
-      },
-      "modified": 1506885002971,
-      "created": 1465574323924,
-      "activated": true,
-      "image_cdn": {
-        "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_2x.jpg",
-        "status": "complete",
-        "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_3x.jpg",
-        "last_processed": 1487093716897,
-        "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_1x.jpg"
-      },
-      "email": "chris.smith@bigmirrorlabs.com",
-      "picture": "f14f896a-f2db-11e6-a274-af9f74bc5069",
-      "uuid": "3532f94a-2f24-11e6-87a5-754329b2b5c9"
-    },
-    {
-      "created": 1465580794995,
-      "modified": 1479175610135,
-      "username": "demo1",
-      "name": "Demo 1",
-      "metadata": {
-        "path": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24",
-        "sets": {
-          "permissions": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/permissions",
-          "rolenames": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/roles"
-        },
-        "connections": {
-          "owns": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/owns",
-          "creates": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/creates",
-          "curates": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/curates",
-          "profilepicture": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/profilepicture"
-        },
-        "collections": {
-          "feed": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/feed",
-          "followers": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/followers",
-          "roles": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/roles",
-          "following": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/following",
-          "groups": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/groups",
-          "devices": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/devices",
-          "activities": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/activities"
-        }
-      },
-      "image_cdn": {
-        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_2x.jpg",
-        "status": "complete",
-        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_3x.jpg",
-        "last_processed": 1476852272561,
-        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_1x.jpg"
-      },
-      "email": "demo1@bigmirrorlabs.com",
-      "type": "user",
-      "activated": true,
-      "picture": "ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1",
-      "uuid": "46420c3a-2f33-11e6-a5d4-7940dd15db24"
-    },
-    {
-      "created": 1465580813080,
-      "modified": 1479176933753,
-      "username": "demo2",
-      "name": "Demo 2",
-      "metadata": {
-        "path": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1",
-        "sets": {
-          "permissions": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/permissions",
-          "rolenames": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/roles"
-        },
-        "connections": {
-          "owns": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/owns",
-          "curates": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/curates",
-          "profilepicture": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/profilepicture"
-        },
-        "collections": {
-          "feed": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/feed",
-          "followers": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/followers",
-          "roles": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/roles",
-          "following": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/following",
-          "groups": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/groups",
-          "devices": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/devices",
-          "activities": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/activities"
-        }
-      },
-      "image_cdn": {
-        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_2x.png",
-        "status": "complete",
-        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_3x.png",
-        "last_processed": 1468869777859,
-        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_1x.png"
-      },
-      "email": "demo2@bigmirrorlabs.com",
-      "type": "user",
-      "activated": true,
-      "picture": "4a78ab7a-4c47-11e6-89ed-ad1e06a25530",
-      "uuid": "5109998a-2f33-11e6-be2b-494ef5dda8f1"
-    },
-    {
-      "created": 1465580834427,
-      "modified": 1469027651205,
-      "username": "demo33",
-      "name": "Demo 3",
-      "metadata": {
-        "path": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
-        "sets": {
-          "permissions": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/permissions",
-          "rolenames": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles"
-        },
-        "connections": {
-          "curates": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/curates"
-        },
-        "collections": {
-          "feed": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/feed",
-          "followers": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/followers",
-          "roles": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles",
-          "following": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/following",
-          "groups": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/groups",
-          "devices": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/devices",
-          "activities": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/activities"
-        }
-      },
-      "email": "demo33@bigmirrorlabs.com",
-      "type": "user",
-      "activated": true,
-      "uuid": "5dc2e4ba-2f33-11e6-9880-47e38a0eed23"
-    },
-    {
-      "created": 1465580853637,
-      "modified": 1479218737435,
-      "username": "demo4",
-      "name": "Demo 4",
-      "metadata": {
-        "path": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a",
-        "sets": {
-          "permissions": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/permissions",
-          "rolenames": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/roles"
-        },
-        "connections": {
-          "owns": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/owns"
-        },
-        "collections": {
-          "feed": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/feed",
-          "followers": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/followers",
-          "roles": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/roles",
-          "following": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/following",
-          "groups": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/groups",
-          "devices": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/devices",
-          "activities": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/activities"
-        }
-      },
-      "email": "demo4@bigmirrorlabs.com",
-      "picture": "http://www.gravatar.com/avatar/97113dd276bf63778f344b6355100728",
-      "type": "user",
-      "activated": true,
-      "uuid": "69361b5a-2f33-11e6-9d6f-c7a4ebfb263a"
-    },
-    {
-      "created": 1465580874552,
-      "modified": 1479218753152,
-      "username": "demo5",
-      "name": "Demo 5",
-      "metadata": {
-        "path": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14",
-        "sets": {
-          "permissions": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/permissions",
-          "rolenames": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/roles"
-        },
-        "connections": {
-          "owns": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/owns"
-        },
-        "collections": {
-          "feed": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/feed",
-          "followers": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/followers",
-          "roles": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/roles",
-          "following": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/following",
-          "groups": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/groups",
-          "devices": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/devices",
-          "activities": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/activities"
-        }
-      },
-      "email": "demo5@bigmirrorlabs.com",
-      "picture": "http://www.gravatar.com/avatar/38319a1f519df2e89ac01db5606c0ea7",
-      "type": "user",
-      "activated": true,
-      "uuid": "75ad7b8a-2f33-11e6-8d91-25e5758e7b14"
-    },
-    {
-      "username": "patrickc",
-      "name": "Patrick Corbett",
-      "metadata": {
-        "connecting": {
-          "owns": "/users/655225da-3161-11e6-b4ba-737909b16a96/connecting/owns"
-        },
-        "path": "/users/655225da-3161-11e6-b4ba-737909b16a96",
-        "sets": {
-          "permissions": "/users/655225da-3161-11e6-b4ba-737909b16a96/permissions",
-          "rolenames": "/users/655225da-3161-11e6-b4ba-737909b16a96/roles"
-        },
-        "connections": {
-          "likes": "/users/655225da-3161-11e6-b4ba-737909b16a96/likes",
-          "follows": "/users/655225da-3161-11e6-b4ba-737909b16a96/follows",
-          "owns": "/users/655225da-3161-11e6-b4ba-737909b16a96/owns",
-          "curates": "/users/655225da-3161-11e6-b4ba-737909b16a96/curates",
-          "profilepicture": "/users/655225da-3161-11e6-b4ba-737909b16a96/profilepicture"
-        },
-        "collections": {
-          "feed": "/users/655225da-3161-11e6-b4ba-737909b16a96/feed",
-          "followers": "/users/655225da-3161-11e6-b4ba-737909b16a96/followers",
-          "roles": "/users/655225da-3161-11e6-b4ba-737909b16a96/roles",
-          "following": "/users/655225da-3161-11e6-b4ba-737909b16a96/following",
-          "groups": "/users/655225da-3161-11e6-b4ba-737909b16a96/groups",
-          "devices": "/users/655225da-3161-11e6-b4ba-737909b16a96/devices",
-          "activities": "/users/655225da-3161-11e6-b4ba-737909b16a96/activities"
-        }
-      },
-      "type": "user",
-      "num_following": 3,
-      "json": "{\n\t\"uuid\": \"655225da-3161-11e6-b4ba-737909b16a96\",\n\t\"type\": \"users\",\n\t\"name\": \"Patrick Corbett\",\n\t\"created\": 1465820506285,\n\t\"modified\": 1467138378687,\n\t\"username\": \"patrickc\",\n\t\"email\": \"patrick.c@bigmirrorlabs.com\",\n\t\"activated\": true,\n\t\"picture\": \"cd1dbd7a-3d5d-11e6-b6a2-f7e30c5301e5\",\n\t\"metadata\": {\n\t\t\"path\": \"/users/655225da-3161-11e6-b4ba-737909b16a96\",\n\t\t\"sets\": {\n\t\t\t\"rolenames\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/roles\",\n\t\t\t\"permissions\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/permissions\"\n\t\t},\n\t\t\"connections\": {\n\t\t\t\"curates\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/curates\",\n\t\t\t\"follows\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/follows\",\n\t\t\t\"owns\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/owns\"\n\t\t},\n\t\t\"collections\": {\n\t\t\t\"activities\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/activities\",\n\t\t\t\"devices\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/devices\",\n\t\t\t\"feed\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/feed\",\n\t\t\t\"groups\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/groups\",\n\t\t\t\"roles\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/roles\",\n\t\t\t\"following\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/following\",\n\t\t\t\"followers\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/followers\"\n\t\t}\n\t}\n}",
-      "modified": 1508872943787,
-      "created": 1465820506285,
-      "activated": true,
-      "image_cdn": {
-        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_2x.jpg",
-        "status": "complete",
-        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_3x.jpg",
-        "last_processed": 1468869819619,
-        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_1x.jpg"
-      },
-      "email": "patrick.c@bigmirrorlabs.com",
-      "picture": "b040f22a-4ad3-11e6-aa6c-1999c7367f59",
-      "uuid": "655225da-3161-11e6-b4ba-737909b16a96"
-    },
-    {
-      "username": "OdinsRaven",
-      "name": "Odin's Raven",
-      "metadata": {
-        "path": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa",
-        "sets": {
-          "permissions": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/permissions",
-          "rolenames": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/roles"
-        },
-        "connections": {
-          "follows": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/follows",
-          "creates": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/creates",
-          "curates": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/curates",
-          "owns": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/owns",
-          "profilepicture": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/profilepicture"
-        },
-        "collections": {
-          "feed": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/feed",
-          "followers": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/followers",
-          "roles": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/roles",
-          "following": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/following",
-          "groups": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/groups",
-          "devices": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/devices",
-          "activities": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/activities"
-        }
-      },
-      "type": "user",
-      "num_following": 0,
-      "modified": 1507068191081,
-      "created": 1465823510467,
-      "activated": true,
-      "organizations": [
-        "e8ce585a-9fdf-11e7-8053-77e933c5d735"
-      ],
-      "image_cdn": {
-        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_2x.jpg",
-        "status": "complete",
-        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_3x.jpg",
-        "last_processed": 1471261438997,
-        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_1x.jpg"
-      },
-      "email": "kendoka90@aol.com",
-      "picture": "8d67236a-62dd-11e6-9474-c9880b529a79",
-      "uuid": "63f3f13a-3168-11e6-9c4c-fb20e0ac10aa"
-    },
-    {
-      "created": 1465832795331,
-      "modified": 1468869906337,
-      "username": "juliehoold",
-      "name": "Julie Ho",
-      "metadata": {
-        "path": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a",
-        "sets": {
-          "permissions": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/permissions",
-          "rolenames": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/roles"
-        },
-        "connections": {
-          "owns": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/owns",
-          "curates": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/curates",
-          "profilepicture": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/profilepicture"
-        },
-        "collections": {
-          "feed": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/feed",
-          "followers": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/followers",
-          "roles": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/roles",
-          "following": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/following",
-          "groups": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/groups",
-          "devices": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/devices",
-          "activities": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/activities"
-        }
-      },
-      "image_cdn": {
-        "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_2x.jpg",
-        "status": "complete",
-        "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_3x.jpg",
-        "last_processed": 1468869906222,
-        "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_1x.jpg"
-      },
-      "email": "julie.ho@bigmirrorlabs.com",
-      "type": "user",
-      "activated": true,
-      "picture": "cebb527a-4882-11e6-9761-7fea2ea2cbee",
-      "uuid": "0229c13a-317e-11e6-ba8d-3f80ab4f857a"
-    },
-    {
-      "username": "nick",
-      "name": "Nicholas Haurus",
-      "formId": "8464a10a-323d-11e6-98b5-d5ade40089b2",
-      "metadata": {
-        "connecting": {
-          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/connecting/follows"
-        },
-        "path": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2",
-        "sets": {
-          "permissions": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/permissions",
-          "rolenames": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles"
-        },
-        "connections": {
-          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/follows",
-          "upvote": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/upvote",
-          "flags": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/flags",
-          "owns": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/owns",
-          "profilepicture": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/profilepicture"
-        },
-        "collections": {
-          "feed": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/feed",
-          "followers": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/followers",
-          "roles": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
-          "following": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/following",
-          "groups": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/groups",
-          "devices": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/devices",
-          "activities": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/activities"
-        }
-      },
-      "type": "user",
-      "num_following": 7,
-      "uuid": "8464a10a-323d-11e6-98b5-d5ade40089b2",
-      "modified": 1508773815494,
-      "created": 1465915047696,
-      "activated": true,
-      "image_cdn": {
-        "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg",
-        "status": "complete",
-        "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_3x.jpg",
-        "last_processed": 1491138483829,
-        "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_1x.jpg"
-      },
-      "organizations": [
-        "e8ce585a-9fdf-11e7-8053-77e933c5d735"
-      ],
-      "email": "nick@haurus.com",
-      "picture": "653e16aa-17a5-11e7-b503-8d9d27b9bc9a",
-      "user-image": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg"
-    },
-    {
-      "username": "nick_123",
-      "name": "Nicholas Haurus",
-      "formId": "8464a10a-323d-11e6-98b5-d5ade40089b2",
-      "metadata": {
-        "connecting": {
-          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/connecting/follows"
-        },
-        "path": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2",
-        "sets": {
-          "permissions": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/permissions",
-          "rolenames": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles"
-        },
-        "connections": {
-          "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/follows",
-          "upvote": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/upvote",
-          "flags": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/flags",
-          "owns": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/owns",
-          "profilepicture": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/profilepicture"
-        },
-        "collections": {
-          "feed": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/feed",
-          "followers": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/followers",
-          "roles": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
-          "following": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/following",
-          "groups": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/groups",
-          "devices": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/devices",
-          "activities": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/activities"
-        }
-      },
-      "type": "user",
-      "num_following": 7,
-      "uuid": "fb548ff2-8ef8-4551-86ec-4bffebf56a74",
-      "modified": 1508773815494,
-      "created": 1465915047696,
-      "activated": true,
-      "image_cdn": {
-        "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg",
-        "status": "complete",
-        "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_3x.jpg",
-        "last_processed": 1491138483829,
-        "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_1x.jpg"
-      },
-      "organizations": [
-        "e8ce585a-9fdf-11e7-8053-77e933c5d735"
-      ],
-      "email": "nick123@haurus.com",
-      "picture": "653e16aa-17a5-11e7-b503-8d9d27b9bc9a",
-      "user-image": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg"
-    }
-  ],
-  "stt": {
-    "callminer_start_time": "2017-10-25T00:31:00",
-    "status": {
-      "code": 2
-    },
-    "callminer_final_time": "2017-10-25T02:39:43"
-  },
-  "order": true,
-  "metadata": {
-    "connecting": {
-      "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/has",
-      "owns": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/connecting/owns"
-    },
-    "path": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9",
-    "connections": {
-      "has": "/presegmentedaudios/93e4863a-b9a1-11e7-a00c-a7fca56f1df9/has"
-    }
-  },
-  "audio": "86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
-  "audio_link": "http://traffic.libsyn.com/clean/mastermindtalks/Master_of_Scale_Jim_Estills_99_Consecutive_Quarters_of_Profit.mp3?dest-id=226001",
-  "updated": "Tue, 24 Oct 2017 17:45:40 +0000"
+  }
 }
+
+
   ],
   "timestamp": 1508957542331,
   "duration": 4,
