@@ -651,12 +651,10 @@ class UserGrid(object):
         :param entity:
         :return:
         """
-
+        if key not in entity:
+            entity[key] = []
         for connecting_entity in self.collect_entities(endpoint):
-            if key not in entity:
-                entity[key] = [connecting_entity]
-            else:
-                entity[key].append(connecting_entity)
+            entity[key].append(connecting_entity)
 
 
 class UserGridException(BaseException):
