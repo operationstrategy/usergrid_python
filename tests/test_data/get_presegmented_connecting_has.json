@@ -1,0 +1,40 @@
+{
+    "action": "get",
+    "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+    "params": {},
+    "path": "/presegmentedaudios/foo/connecting",
+    "uri": "http://localhost:8080/sxm/orange/presegmentedaudios/foo/connecting",
+    "entities": [
+        {
+            "uuid": "3259a5aa-aee1-11e7-8397-d74445e8a6c9",
+            "type": "contentfeed",
+            "created": 1507766789370,
+            "modified": 1508948957052,
+            "description": "Self-Made is a myth. The truth is no one ever does it alone. We need other people to lean on and to learn from. The Community Made Podcast is an all access pass to lessons, learnings, and key insights from the world’s most successful entrepreneurs including Gary Vaynerchuk, Naveen Jain, Tim Ferris, and Shep Gordon. People who are not only winning in business, but winning in at life as well. They say that an entrepreneur is someone who goes from working in their business to on their business. But there’s another level of entrepreneur who goes from working on their business to working on themselves. That’s who this podcast is for. My philosophy is that if I am transparent about my story, you can leverage my wins while at the same time avoiding my losses. Because in the words of Charlie Munger, \"everyone learns from experience, but I’d rather learn from the experiences of others.\"",
+            "image": "http://static.libsyn.com/p/assets/6/9/f/b/69fb1b4623455674/jayson-cover-art.jpg",
+            "metadata": {
+                "connecting": {
+                    "owns": "/presegmentedaudios/foo/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/connecting/owns"
+                },
+                "path": "/presegmentedaudios/foo/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9",
+                "connections": {
+                    "has": "/presegmentedaudios/foo/connecting/3259a5aa-aee1-11e7-8397-d74445e8a6c9/has"
+                }
+            },
+            "new": false,
+            "org_id": "777c125a-b033-11e7-9166-31cfb1b65684",
+            "path_uuid": "7587c86a-aacd-11e7-8d50-fd9e556ec1ea",
+            "rss": true,
+            "server_modified": "Wed, 25 Oct 2017 15:28:36 GMT",
+            "status": "processed",
+            "title": "Community Made",
+            "updated": "Mon, 09 Oct 2017 09:02:56 +0000",
+            "url": "http://mastermindtalks.libsyn.com/rss",
+            "user_uuid": "4fa2daea-aacd-11e7-8e45-3d670b890262"
+        }
+    ],
+    "timestamp": 1508957635314,
+    "duration": 8,
+    "organization": "sxm",
+    "applicationName": "orange"
+}

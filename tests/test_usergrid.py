@@ -769,3 +769,156 @@ class TestUserGrid(TestCase):
             mock.mock_calls,
             'UserGrid get_entities did not process entities'
         )
+
+    def test_archive_one_entity(self, mock):
+        """
+        tests archiving an entity
+        :param mock:
+        :return:
+        """
+
+        entities_response = read_json_file('get_presegmented.json')
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo",
+            json=entities_response
+        )
+        presegmented_has_response = read_json_file(
+            'get_presegmented_has.json'
+        )
+
+        presegmented_connecting_has_response = read_json_file(
+            'get_presegmented_connecting_has.json'
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo/has",
+            json=presegmented_has_response
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/"
+            "presegmentedaudios/foo/connecting/has",
+            json=presegmented_connecting_has_response
+        )
+
+        archived_presegmented_post_response = read_json_file(
+            'archived_presegmented_post.json'
+        )
+        mock.register_uri(
+            "POST",
+            "http://usergrid.com:80/man/chuck/archived_presegmentedaudios",
+            json=archived_presegmented_post_response
+        )
+        page_one_response = read_json_file(
+            'presegmented_connecting_owns_users_1.json'
+        )
+
+        page_two_response = read_json_file(
+            'presegmented_connecting_owns_users_2.json'
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/"
+            "presegmentedaudios/foo/connecting/owns",
+            json=page_one_response
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/"
+            "presegmentedaudios/foo/connecting/owns"
+            "?cursor=LTU2ODc0MzQzOmhHU2hDakk5RWVhWXRkV3Q1QUNKc2c",
+            json=page_two_response
+        )
+
+        delete_response = read_json_file('delete_presegmented.json')
+        mock.register_uri(
+            "DELETE",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo",
+            json=delete_response
+        )
+        archived_entity = self.user_grid.archive_entity(
+            "presegmentedaudios",
+            "foo"
+        )
+
+        self.assertEqual(
+            archived_presegmented_post_response['entities'][0],
+            archived_entity, "Usergrid didn't archive entity"
+        )
+
+    def test_it_should_archive_entity_without_connections(self, mock):
+        """
+        test to make sure it archives entity if it has no connections
+        :param mock:
+        :return:
+        """
+        entities_response = read_json_file('get_presegmented.json')
+        delete_response = read_json_file('delete_presegmented.json')
+        archived_presegmented_post_response = read_json_file(
+            'archived_presegmented_post.json'
+        )
+        for key in ['connections', 'connecting']:
+            entities_response['entities'][0]['metadata'].pop(key, None)
+            delete_response['entities'][0]['metadata'].pop(key, None)
+            archived_presegmented_post_response['entities'][0]['metadata'].pop(
+                key, None
+            )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo",
+            json=entities_response
+        )
+        mock.register_uri(
+            "DELETE",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo",
+            json=delete_response
+        )
+        mock.register_uri(
+            "POST",
+            "http://usergrid.com:80/man/chuck/archived_presegmentedaudios",
+            json=archived_presegmented_post_response
+        )
+        archived_entity = self.user_grid.archive_entity(
+            "presegmentedaudios",
+            "foo"
+        )
+        self.assertEqual(
+            archived_presegmented_post_response['entities'][0],
+            archived_entity, "Usergrid didn't archive entity"
+        )
+
+    def test_it_should_not_archive_entity_when_conneting_entity_not_found(
+            self,
+            mock
+    ):
+        """
+        test to check if it raises exception and not archive entity when
+        connections are not found
+        :param mock:
+        :return:
+        """
+        entities_response = read_json_file('get_presegmented.json')
+        entities_response['entities'][0]['metadata'].pop("connecting", None)
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo",
+            json=entities_response
+        )
+        presegmented_has_response_not_found = read_json_file(
+            'get_entity_not_found_response.json'
+        )
+
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo/has",
+            json=presegmented_has_response_not_found,
+            status_code=404
+        )
+        with self.assertRaises(UserGridException) as failed:
+            self.user_grid.archive_entity("presegmentedaudios", "foo")

@@ -1,0 +1,83 @@
+{
+    "action": "get",
+    "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+    "params": {},
+    "path": "/presegmentedaudios",
+    "uri": "http://localhost:8080/sxm/orange/presegmentedaudios",
+    "entities": [
+        {
+            "uuid": "foo",
+            "type": "presegmentedaudio",
+            "name": "rss_tmpsccfv4dx1508948900_1508948905.2695768",
+            "created": 1508948928019,
+            "modified": 1508957540848,
+            "audio": "86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
+            "audio_link": "http://traffic.libsyn.com/clean/mastermindtalks/Master_of_Scale_Jim_Estills_99_Consecutive_Quarters_of_Profit.mp3?dest-id=226001",
+            "description": "“To scale, it’s not what you start doing, it’s what you stop doing… the only way to scale is to give things up.” - Jim Estill In this episode my good friend Saud Juman and I have the privilege of interviewing Jim Estill, one of Canada’s most eccentric and notorious entrepreneurs. This man has invested in over 150 businesses, boasts 99 consecutive quarters of profit, and successfully scaled his first business, which he started out of the trunk of his car, from zero to $2 Billion dollars. In the last couple of years Jim became famous for giving 1.5 Million dollars of his own money to secretly launch a resettlement program that brought 58 Syrian families into Ontario and provided them with housing, language training, and employment. He coordinated the entire program and didn’t even tell his own wife until it was ready for launch. In this episode the three of us talk about the struggle of giving up control in order to scale a business, what to look for when you’re considering investments, understanding your company’s niche, finding your micro competitive advantages, and why Jim does not give money to his kids. People mentioned in this episode:  Zig Ziglar Robert B. Cialdini Al Ries & Jack Trout Malcolm Gladwell Daniel Pink  Select Links and References:  https://torontolife.com/city/life/jim-estill-the-man-who-saved-200-syrian-refugees/ Time Leadership; Lessons from a CEO http://amzn.to/2z4UGp4   Think and Grow Rich http://amzn.to/2a2PSmU  Influence: The Psychology of Persuasion http://amzn.to/2cxgptc  22 Immutable Laws of Marketing http://amzn.to/2zBfz7I  Tipping Point: How Little Things Can Make a Big Difference http://amzn.to/2xklMny  Drive: The Surprising Truth About What Motivates Us http://amzn.to/2laOp50  The Five Minute Journal  https://www.intelligentchange.com/products/the-five-minute-journal  ",
+            "duration": 5525,
+            "full_story": true,
+            "fullstory": {
+                "uuid": "942bc86a-b9a1-11e7-aa55-8102b9ac0d17",
+                "title": "S1E8 - Master of Scale: Jim Estill’s 99 Consecutive Quarters of Profit",
+                "created": 1508948928486,
+                "modified": 1508948928486,
+                "path_id": "7587c86a-aacd-11e7-8d50-fd9e556ec1ea",
+                "rel_reason": "Full Story"
+            },
+            "id": "dcb88fa68e56e665df8711c8189343e7",
+            "metadata": {
+                "connecting": {
+                    "has": "/presegmentedaudios/foo/connecting/has",
+                    "owns": "/presegmentedaudios/foo/connecting/owns"
+
+                },
+                "path": "/presegmentedaudios/foo",
+                "connections": {
+
+                    "has": "/presegmentedaudios/foo/has"
+                }
+            },
+            "order": true,
+            "org_id": "777c125a-b033-11e7-9166-31cfb1b65684",
+            "owner": {
+                "name": "Community Made",
+                "username": "communitymade",
+                "email": "communitymade@siriusxm.com",
+                "uuid": "4fa2daea-aacd-11e7-8e45-3d670b890262",
+                "picture": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/4c4b728a-aacd-11e7-9b6f-ade4487ec534/4c4b728a-aacd-11e7-9b6f-ade4487ec534_2x.jpg"
+            },
+            "partition_status": {},
+            "requested_full_story": true,
+            "segmentation": {
+                "status": {
+                    "code": 2
+                }
+            },
+            "segmentationProgress": [
+                "2-RSS-sent to stt status_code=200",
+                "3-STT-file received for processing",
+                "4-STT-audiofile sent to callminer",
+                "5-STT-done file created by callminer",
+                "6-STT-file processed by callminer",
+                "7-STT-transcripts and tags are stored",
+                "8-STT-message pushed through queue",
+                "9-Segmenter-Received message from queue",
+                "10-Segmenter-Read transcript from s3",
+                "11-Segmenter-Processing Complete"
+            ],
+            "stt": {
+                "status": {
+                    "code": 2
+                },
+                "callminer_start_time": "2017-10-25T00:31:00",
+                "callminer_final_time": "2017-10-25T02:39:43"
+            },
+            "title": "S1E8 - Master of Scale: Jim Estill’s 99 Consecutive Quarters of Profit",
+            "updated": "Tue, 24 Oct 2017 17:45:40 +0000"
+        }
+    ],
+    "timestamp": 1508957542331,
+    "duration": 4,
+    "organization": "sxm",
+    "applicationName": "orange"
+}

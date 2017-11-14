@@ -1,0 +1,33 @@
+{
+    "action": "get",
+    "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+    "params": {},
+    "path": "/presegmentedaudios/foo/has",
+    "uri": "http://localhost:8080/sxm/orange/presegmentedaudios/foo/has",
+    "entities": [
+        {
+            "uuid": "86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
+            "type": "presegmentedaudio_clip",
+            "name": "rss_tmpsccfv4dx1508948900_1508948905.0719638",
+            "created": 1508948905256,
+            "modified": 1508948927920,
+            "file-metadata": {
+                "content-type": "audio/mpeg",
+                "etag": "wB9RxSiv2b",
+                "last-modified": 1508948927902,
+                "content-length": 176793008
+            },
+            "filename": "rss_tmpsccfv4dx1508948900.mp3",
+            "metadata": {
+                "path": "/presegmentedaudios/foo/has/86532a8a-b9a1-11e7-a7cf-675ce7483d8b",
+                "connecting": {
+                    "has": "/presegmentedaudios/foo/has/86532a8a-b9a1-11e7-a7cf-675ce7483d8b/connecting/has"
+                }
+            }
+        }
+    ],
+    "timestamp": 1508957605004,
+    "duration": 9,
+    "organization": "sxm",
+    "applicationName": "orange"
+}

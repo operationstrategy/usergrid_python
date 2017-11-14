@@ -1,0 +1,410 @@
+{
+    "action": "get",
+    "application": "50dec060-2e6c-11e6-a58e-b9a51754978b",
+    "params": {},
+    "path": "/presegmentedaudios/foo/connecting/owns",
+    "uri": "http://localhost:8080/sxm/orange/presegmentedaudios/foo/connecting/owns",
+    "entities": [
+        {
+            "uuid": "3532f94a-2f24-11e6-87a5-754329b2b5c9",
+            "type": "user",
+            "name": "Christopher Smith",
+            "created": 1465574323924,
+            "modified": 1506885002971,
+            "username": "chris.s",
+            "email": "chris.smith@bigmirrorlabs.com",
+            "activated": true,
+            "picture": "f14f896a-f2db-11e6-a274-af9f74bc5069",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_1x.jpg",
+                "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_3x.jpg",
+                "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/f14f896a-f2db-11e6-a274-af9f74bc5069/f14f896a-f2db-11e6-a274-af9f74bc5069_2x.jpg",
+                "last_processed": 1487093716897
+            },
+            "metadata": {
+                "path": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9",
+                "sets": {
+                    "rolenames": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/roles",
+                    "permissions": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/permissions"
+                },
+                "connections": {
+                    "creates": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/creates",
+                    "curates": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/curates",
+                    "follows": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/follows",
+                    "likes": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/likes",
+                    "notliked": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/notliked",
+                    "owns": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/owns",
+                    "profilepicture": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/profilepicture",
+                    "recommends": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/recommends",
+                    "upvote": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/upvote"
+                },
+                "collections": {
+                    "activities": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/activities",
+                    "devices": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/devices",
+                    "feed": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/feed",
+                    "groups": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/groups",
+                    "roles": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/roles",
+                    "following": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/following",
+                    "followers": "/users/3532f94a-2f24-11e6-87a5-754329b2b5c9/followers"
+                }
+            },
+            "notes": "no notes",
+            "num_following": 7
+        },
+        {
+            "uuid": "46420c3a-2f33-11e6-a5d4-7940dd15db24",
+            "type": "user",
+            "name": "Demo 1",
+            "created": 1465580794995,
+            "modified": 1479175610135,
+            "username": "demo1",
+            "email": "demo1@bigmirrorlabs.com",
+            "activated": true,
+            "picture": "ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_1x.jpg",
+                "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_3x.jpg",
+                "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1/ba17feaa-95b6-11e6-8c5e-cb9144a6e0c1_2x.jpg",
+                "last_processed": 1476852272561
+            },
+            "metadata": {
+                "path": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24",
+                "sets": {
+                    "rolenames": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/roles",
+                    "permissions": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/permissions"
+                },
+                "connections": {
+                    "creates": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/creates",
+                    "curates": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/curates",
+                    "owns": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/owns",
+                    "profilepicture": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/profilepicture"
+                },
+                "collections": {
+                    "activities": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/activities",
+                    "devices": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/devices",
+                    "feed": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/feed",
+                    "groups": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/groups",
+                    "roles": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/roles",
+                    "following": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/following",
+                    "followers": "/users/46420c3a-2f33-11e6-a5d4-7940dd15db24/followers"
+                }
+            }
+        },
+        {
+            "uuid": "5109998a-2f33-11e6-be2b-494ef5dda8f1",
+            "type": "user",
+            "name": "Demo 2",
+            "created": 1465580813080,
+            "modified": 1479176933753,
+            "username": "demo2",
+            "email": "demo2@bigmirrorlabs.com",
+            "activated": true,
+            "picture": "4a78ab7a-4c47-11e6-89ed-ad1e06a25530",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_1x.png",
+                "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_3x.png",
+                "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/4a78ab7a-4c47-11e6-89ed-ad1e06a25530/4a78ab7a-4c47-11e6-89ed-ad1e06a25530_2x.png",
+                "last_processed": 1468869777859
+            },
+            "metadata": {
+                "path": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1",
+                "sets": {
+                    "rolenames": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/roles",
+                    "permissions": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/permissions"
+                },
+                "connections": {
+                    "curates": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/curates",
+                    "owns": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/owns",
+                    "profilepicture": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/profilepicture"
+                },
+                "collections": {
+                    "activities": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/activities",
+                    "devices": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/devices",
+                    "feed": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/feed",
+                    "groups": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/groups",
+                    "roles": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/roles",
+                    "following": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/following",
+                    "followers": "/users/5109998a-2f33-11e6-be2b-494ef5dda8f1/followers"
+                }
+            }
+        },
+        {
+            "uuid": "5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
+            "type": "user",
+            "name": "Demo 3",
+            "created": 1465580834427,
+            "modified": 1469027651205,
+            "username": "demo33",
+            "email": "demo33@bigmirrorlabs.com",
+            "activated": true,
+            "metadata": {
+                "path": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23",
+                "sets": {
+                    "rolenames": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles",
+                    "permissions": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/permissions"
+                },
+                "connections": {
+                    "curates": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/curates"
+                },
+                "collections": {
+                    "activities": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/activities",
+                    "devices": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/devices",
+                    "feed": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/feed",
+                    "groups": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/groups",
+                    "roles": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/roles",
+                    "following": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/following",
+                    "followers": "/users/5dc2e4ba-2f33-11e6-9880-47e38a0eed23/followers"
+                }
+            }
+        },
+        {
+            "uuid": "69361b5a-2f33-11e6-9d6f-c7a4ebfb263a",
+            "type": "user",
+            "name": "Demo 4",
+            "created": 1465580853637,
+            "modified": 1479218737435,
+            "username": "demo4",
+            "email": "demo4@bigmirrorlabs.com",
+            "activated": true,
+            "picture": "http://www.gravatar.com/avatar/97113dd276bf63778f344b6355100728",
+            "metadata": {
+                "path": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a",
+                "sets": {
+                    "rolenames": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/roles",
+                    "permissions": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/permissions"
+                },
+                "connections": {
+                    "owns": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/owns"
+                },
+                "collections": {
+                    "activities": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/activities",
+                    "devices": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/devices",
+                    "feed": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/feed",
+                    "groups": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/groups",
+                    "roles": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/roles",
+                    "following": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/following",
+                    "followers": "/users/69361b5a-2f33-11e6-9d6f-c7a4ebfb263a/followers"
+                }
+            }
+        },
+        {
+            "uuid": "75ad7b8a-2f33-11e6-8d91-25e5758e7b14",
+            "type": "user",
+            "name": "Demo 5",
+            "created": 1465580874552,
+            "modified": 1479218753152,
+            "username": "demo5",
+            "email": "demo5@bigmirrorlabs.com",
+            "activated": true,
+            "picture": "http://www.gravatar.com/avatar/38319a1f519df2e89ac01db5606c0ea7",
+            "metadata": {
+                "path": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14",
+                "sets": {
+                    "rolenames": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/roles",
+                    "permissions": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/permissions"
+                },
+                "connections": {
+                    "owns": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/owns"
+                },
+                "collections": {
+                    "activities": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/activities",
+                    "devices": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/devices",
+                    "feed": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/feed",
+                    "groups": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/groups",
+                    "roles": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/roles",
+                    "following": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/following",
+                    "followers": "/users/75ad7b8a-2f33-11e6-8d91-25e5758e7b14/followers"
+                }
+            }
+        },
+        {
+            "uuid": "655225da-3161-11e6-b4ba-737909b16a96",
+            "type": "user",
+            "name": "Patrick Corbett",
+            "created": 1465820506285,
+            "modified": 1508872943787,
+            "username": "patrickc",
+            "email": "patrick.c@bigmirrorlabs.com",
+            "activated": true,
+            "picture": "b040f22a-4ad3-11e6-aa6c-1999c7367f59",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_1x.jpg",
+                "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_3x.jpg",
+                "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/b040f22a-4ad3-11e6-aa6c-1999c7367f59/b040f22a-4ad3-11e6-aa6c-1999c7367f59_2x.jpg",
+                "last_processed": 1468869819619
+            },
+            "json": "{\n\t\"uuid\": \"655225da-3161-11e6-b4ba-737909b16a96\",\n\t\"type\": \"users\",\n\t\"name\": \"Patrick Corbett\",\n\t\"created\": 1465820506285,\n\t\"modified\": 1467138378687,\n\t\"username\": \"patrickc\",\n\t\"email\": \"patrick.c@bigmirrorlabs.com\",\n\t\"activated\": true,\n\t\"picture\": \"cd1dbd7a-3d5d-11e6-b6a2-f7e30c5301e5\",\n\t\"metadata\": {\n\t\t\"path\": \"/users/655225da-3161-11e6-b4ba-737909b16a96\",\n\t\t\"sets\": {\n\t\t\t\"rolenames\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/roles\",\n\t\t\t\"permissions\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/permissions\"\n\t\t},\n\t\t\"connections\": {\n\t\t\t\"curates\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/curates\",\n\t\t\t\"follows\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/follows\",\n\t\t\t\"owns\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/owns\"\n\t\t},\n\t\t\"collections\": {\n\t\t\t\"activities\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/activities\",\n\t\t\t\"devices\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/devices\",\n\t\t\t\"feed\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/feed\",\n\t\t\t\"groups\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/groups\",\n\t\t\t\"roles\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/roles\",\n\t\t\t\"following\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/following\",\n\t\t\t\"followers\": \"/users/655225da-3161-11e6-b4ba-737909b16a96/followers\"\n\t\t}\n\t}\n}",
+            "metadata": {
+                "connecting": {
+                    "owns": "/users/655225da-3161-11e6-b4ba-737909b16a96/connecting/owns"
+                },
+                "path": "/users/655225da-3161-11e6-b4ba-737909b16a96",
+                "sets": {
+                    "rolenames": "/users/655225da-3161-11e6-b4ba-737909b16a96/roles",
+                    "permissions": "/users/655225da-3161-11e6-b4ba-737909b16a96/permissions"
+                },
+                "connections": {
+                    "curates": "/users/655225da-3161-11e6-b4ba-737909b16a96/curates",
+                    "follows": "/users/655225da-3161-11e6-b4ba-737909b16a96/follows",
+                    "likes": "/users/655225da-3161-11e6-b4ba-737909b16a96/likes",
+                    "owns": "/users/655225da-3161-11e6-b4ba-737909b16a96/owns",
+                    "profilepicture": "/users/655225da-3161-11e6-b4ba-737909b16a96/profilepicture"
+                },
+                "collections": {
+                    "activities": "/users/655225da-3161-11e6-b4ba-737909b16a96/activities",
+                    "devices": "/users/655225da-3161-11e6-b4ba-737909b16a96/devices",
+                    "feed": "/users/655225da-3161-11e6-b4ba-737909b16a96/feed",
+                    "groups": "/users/655225da-3161-11e6-b4ba-737909b16a96/groups",
+                    "roles": "/users/655225da-3161-11e6-b4ba-737909b16a96/roles",
+                    "following": "/users/655225da-3161-11e6-b4ba-737909b16a96/following",
+                    "followers": "/users/655225da-3161-11e6-b4ba-737909b16a96/followers"
+                }
+            },
+            "num_following": 3
+        },
+        {
+            "uuid": "63f3f13a-3168-11e6-9c4c-fb20e0ac10aa",
+            "type": "user",
+            "name": "Odin's Raven",
+            "created": 1465823510467,
+            "modified": 1507068191081,
+            "username": "OdinsRaven",
+            "email": "kendoka90@aol.com",
+            "activated": true,
+            "picture": "8d67236a-62dd-11e6-9474-c9880b529a79",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_1x.jpg",
+                "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_3x.jpg",
+                "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/8d67236a-62dd-11e6-9474-c9880b529a79/8d67236a-62dd-11e6-9474-c9880b529a79_2x.jpg",
+                "last_processed": 1471261438997
+            },
+            "metadata": {
+                "path": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa",
+                "sets": {
+                    "rolenames": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/roles",
+                    "permissions": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/permissions"
+                },
+                "connections": {
+                    "creates": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/creates",
+                    "curates": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/curates",
+                    "follows": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/follows",
+                    "owns": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/owns",
+                    "profilepicture": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/profilepicture"
+                },
+                "collections": {
+                    "activities": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/activities",
+                    "devices": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/devices",
+                    "feed": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/feed",
+                    "groups": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/groups",
+                    "roles": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/roles",
+                    "following": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/following",
+                    "followers": "/users/63f3f13a-3168-11e6-9c4c-fb20e0ac10aa/followers"
+                }
+            },
+            "num_following": 0,
+            "organizations": [
+                "e8ce585a-9fdf-11e7-8053-77e933c5d735"
+            ]
+        },
+        {
+            "uuid": "0229c13a-317e-11e6-ba8d-3f80ab4f857a",
+            "type": "user",
+            "name": "Julie Ho",
+            "created": 1465832795331,
+            "modified": 1468869906337,
+            "username": "juliehoold",
+            "email": "julie.ho@bigmirrorlabs.com",
+            "activated": true,
+            "picture": "cebb527a-4882-11e6-9761-7fea2ea2cbee",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_1x.jpg",
+                "3x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_3x.jpg",
+                "2x": "http://qa1.orange.bigmirrorlabs.com/qa1/images/cebb527a-4882-11e6-9761-7fea2ea2cbee/cebb527a-4882-11e6-9761-7fea2ea2cbee_2x.jpg",
+                "last_processed": 1468869906222
+            },
+            "metadata": {
+                "path": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a",
+                "sets": {
+                    "rolenames": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/roles",
+                    "permissions": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/permissions"
+                },
+                "connections": {
+                    "curates": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/curates",
+                    "owns": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/owns",
+                    "profilepicture": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/profilepicture"
+                },
+                "collections": {
+                    "activities": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/activities",
+                    "devices": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/devices",
+                    "feed": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/feed",
+                    "groups": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/groups",
+                    "roles": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/roles",
+                    "following": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/following",
+                    "followers": "/users/0229c13a-317e-11e6-ba8d-3f80ab4f857a/followers"
+                }
+            }
+        },
+        {
+            "uuid": "8464a10a-323d-11e6-98b5-d5ade40089b2",
+            "type": "user",
+            "name": "Nicholas Haurus",
+            "created": 1465915047696,
+            "modified": 1508773815494,
+            "username": "nick",
+            "email": "nick@haurus.com",
+            "activated": true,
+            "picture": "653e16aa-17a5-11e7-b503-8d9d27b9bc9a",
+            "formId": "8464a10a-323d-11e6-98b5-d5ade40089b2",
+            "image_cdn": {
+                "status": "complete",
+                "1x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_1x.jpg",
+                "3x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_3x.jpg",
+                "2x": "http://prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg",
+                "last_processed": 1491138483829
+            },
+            "metadata": {
+                "connecting": {
+                    "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/connecting/follows"
+                },
+                "path": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2",
+                "sets": {
+                    "rolenames": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+                    "permissions": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/permissions"
+                },
+                "connections": {
+                    "flags": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/flags",
+                    "follows": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/follows",
+                    "owns": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/owns",
+                    "profilepicture": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/profilepicture",
+                    "upvote": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/upvote"
+                },
+                "collections": {
+                    "activities": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/activities",
+                    "devices": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/devices",
+                    "feed": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/feed",
+                    "groups": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/groups",
+                    "roles": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/roles",
+                    "following": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/following",
+                    "followers": "/users/8464a10a-323d-11e6-98b5-d5ade40089b2/followers"
+                }
+            },
+            "num_following": 7,
+            "organizations": [
+                "e8ce585a-9fdf-11e7-8053-77e933c5d735"
+            ],
+            "user-image": "https://s3.amazonaws.com/prod.orange.bigmirrorlabs.com/prod/images/653e16aa-17a5-11e7-b503-8d9d27b9bc9a/653e16aa-17a5-11e7-b503-8d9d27b9bc9a_2x.jpg"
+        }
+    ],
+    "timestamp": 1509035113923,
+    "duration": 70,
+    "organization": "sxm",
+    "applicationName": "orange",
+    "cursor": "LTU2ODc0MzQzOmhHU2hDakk5RWVhWXRkV3Q1QUNKc2c",
+    "count": 10
+}
