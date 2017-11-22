@@ -7,7 +7,6 @@ import warnings
 import time
 import requests
 
-__version__ = '0.1.4'
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 

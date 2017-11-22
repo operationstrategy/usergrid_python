@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
+from usergrid import __version__
 
-__version__ = '0.1.6'
 
 setup(
     name='UserGrid',
