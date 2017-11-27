@@ -8,6 +8,8 @@ import time
 import requests
 
 
+__version__ = '0.1.7'
+
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 
@@ -661,3 +663,6 @@ class UserGridException(BaseException):
     Exception class for UG
     """
     pass
+
+
+__all__ = ['UserGrid', 'UserGridException', '__version__']
