@@ -6,6 +6,7 @@ import logging
 import warnings
 import time
 import requests
+from usergrid import __version__
 
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
