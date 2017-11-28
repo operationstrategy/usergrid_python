@@ -930,6 +930,6 @@ class TestUserGrid(TestCase):
         """
 
         self.assertEqual(
-            '0.1.7',
+            '0.1.8',
             __version__
         )

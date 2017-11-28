@@ -8,7 +8,7 @@ import time
 import requests
 
 
-__version__ = '0.1.7'
+__version__ = '0.1.8'
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -168,7 +168,13 @@ class UserGrid(object):
             # request is made with milliseconds
             data['ttl'] = int(ttl) * 1000
 
-        login_response = requests.post(endpoint + "/token", data=data)
+        login_response = requests.request(
+            method="POST",
+            url=endpoint + "/token",
+            data=data,
+            timeout=20
+        )
+
         login_response.raise_for_status()
         login_json = login_response.json()
 
