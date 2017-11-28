@@ -3,7 +3,6 @@ Test module
 """
 import json
 import os
-import logging
 
 
 def read_json_file(file_name):
@@ -18,7 +17,7 @@ def read_json_file(file_name):
         file_name
     )
 
-    file_handler = open(file_name, 'r')
+    file_handler = open(file_name, 'r', encoding='utf-8')
     json_data = json.load(file_handler)
     file_handler.close()
 

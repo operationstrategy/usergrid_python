@@ -5,8 +5,7 @@ from unittest import TestCase
 import requests
 import requests_mock
 from tests import read_json_file
-from usergrid.usergrid import UserGrid
-from usergrid.usergrid import UserGridException
+from usergrid.usergrid import *
 import logging
 from unittest.mock import Mock
 from unittest.mock import call
@@ -922,3 +921,15 @@ class TestUserGrid(TestCase):
         )
         with self.assertRaises(UserGridException) as failed:
             self.user_grid.archive_entity("presegmentedaudios", "foo")
+
+    def test_it_should_return_version(self, mock):
+        """
+        Ensures that the version number can be imported correctly
+
+        :return:
+        """
+
+        self.assertEqual(
+            '0.1.8',
+            __version__
+        )
