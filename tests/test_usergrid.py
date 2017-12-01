@@ -930,6 +930,61 @@ class TestUserGrid(TestCase):
         """
 
         self.assertEqual(
-            '0.1.8',
+            '0.1.9',
             __version__
+        )
+
+    def test_it_should_update_password(self, mock):
+        entities_response = read_json_file('change_password_success.json')
+
+        def request_match(request):
+            return (
+                request.body ==
+                '{"oldpassword": "foo", "newpassword": "bar"}')
+
+        mock.register_uri(
+            "PUT",
+            "http://usergrid.com:80/man/chuck/users/"
+            "6e479bee-d6be-11e7-9296-cec278b6b50a/password?client_id=manchuck"
+            "&client_secret=manbearpig",
+            json=entities_response,
+            additional_matcher=request_match
+        )
+
+        self.assertEqual(
+            True,
+            self.user_grid.update_password(
+                user_id='6e479bee-d6be-11e7-9296-cec278b6b50a',
+                old_password='foo',
+                new_password='bar'
+            )
+        )
+
+    def test_it_should_throw_exception_when_update_password_fails(self, mock):
+        entities_response = read_json_file('change_password_error.json')
+
+        def request_match(request):
+            return (
+                request.body ==
+                '{"oldpassword": "foo", "newpassword": "bar"}')
+
+        mock.register_uri(
+            "PUT",
+            "http://usergrid.com:80/man/chuck/users/"
+            "6e479bee-d6be-11e7-9296-cec278b6b50a/password?client_id=manchuck"
+            "&client_secret=manbearpig",
+            json=entities_response,
+            additional_matcher=request_match
+        )
+
+        with self.assertRaises(UserGridException) as update_pass_exception:
+            self.user_grid.update_password(
+                user_id='6e479bee-d6be-11e7-9296-cec278b6b50a',
+                old_password='foo',
+                new_password='bar'
+            )
+
+        self.assertEqual(
+            str(update_pass_exception.exception),
+            'Updating password failed: User not found'
         )

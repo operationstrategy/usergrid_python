@@ -1,4 +1,4 @@
-from mock_usergrid import MockUserGrid
+from usergrid.mock_usergrid import MockUserGrid
 import time
 import uuid
 import unittest
