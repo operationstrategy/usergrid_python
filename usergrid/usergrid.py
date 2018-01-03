@@ -7,8 +7,7 @@ import warnings
 import time
 import requests
 
-
-__version__ = '0.1.9'
+__version__ = '0.1.10'
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -216,7 +215,8 @@ class UserGrid(object):
 
         return "{0}/{1}".format(self._app_endpoint, path)
 
-    def collect_entities(self, endpoint, ql=None, limit=None):  # pylint: disable=invalid-name
+    def collect_entities(self, endpoint, ql=None,
+            limit=None):  # pylint: disable=invalid-name
         """
         A generator to return all entities
 
@@ -247,7 +247,8 @@ class UserGrid(object):
             if cursor is None:
                 break
 
-    def process_entities(self, endpoint, method, ql=None, limit=None):  # pylint: disable=invalid-name
+    def process_entities(self, endpoint, method, ql=None,
+            limit=None):  # pylint: disable=invalid-name
         """
         Apply a function to each entity
 
@@ -264,7 +265,8 @@ class UserGrid(object):
         for entity in self.collect_entities(endpoint, ql, limit):
             method(entity)
 
-    def get_entities(self, endpoint, cursor=None, ql=None, limit=None):  # pylint: disable=invalid-name
+    def get_entities(self, endpoint, cursor=None, ql=None,
+            limit=None):  # pylint: disable=invalid-name
         """
         Get entities from UG
 
@@ -322,7 +324,9 @@ class UserGrid(object):
         :rtype dict | None:
         :return:
         """
-        entities, cursor = self.get_entities(endpoint, ql=ql, limit=1)  # pylint: disable=unused-variable
+        entities, cursor = self.get_entities(endpoint, ql=ql,
+                                             limit=1)  # pylint:
+        # disable=unused-variable
         entity = None
         if entities:
             entity = entities[0]
@@ -406,7 +410,8 @@ class UserGrid(object):
         """
         return self.update_entity(entity + '/' + entity_id, data)
 
-    def post_activity(self, endpoint, actor, verb, content, data=None):  # pylint: disable=too-many-arguments
+    def post_activity(self, endpoint, actor, verb, content,
+            data=None):  # pylint: disable=too-many-arguments
         """
         Saves activity for an actor
 
@@ -558,7 +563,10 @@ class UserGrid(object):
             self.login()
             return
 
-        raise UserGridException('Access token has expired')
+        raise UserGridException(
+            title=UserGridException.ERROR_EXPIRED_TOKEN,
+            detail='Access token has expired'
+        )
 
     def _make_request(self, method, url, **kwargs):
         """
@@ -592,7 +600,19 @@ class UserGrid(object):
             if 'exception' not in response_json:
                 return response_json
 
-            raise UserGridException(response_json['error_description'])
+            title = UserGridException.ERROR_GENERAL
+            detail = 'Unknown user grid error'
+
+            if 'error' in response_json:
+                title = response_json['error']
+
+            if 'error_description' in response_json:
+                detail = response_json['error_description']
+
+            raise UserGridException(
+                title=title,
+                detail=detail
+            )
 
         except Exception as request_exception:
             logger.exception(request_exception)
@@ -673,7 +693,8 @@ class UserGrid(object):
 
         if 'error' in response:
             raise UserGridException(
-                'Updating password failed: ' + response['error']
+                title=UserGridException.ERROR_PASSWORD_FAILED,
+                detail='Updating password failed: ' + response['error']
             )
 
         return True
@@ -698,7 +719,36 @@ class UserGridException(BaseException):
     """
     Exception class for UG
     """
-    pass
+    ERROR_PASSWORD_FAILED = 'password_update_failed'
+    ERROR_EXPIRED_TOKEN = 'expired_token'
+    ERROR_GENERAL = 'usergrid_failure'
+
+    _title = None
+
+    _detail = None
+
+    def __init__(self, title, detail):
+        self.title = title
+        self.detail = detail
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, title):
+        self._title = title
+
+    @property
+    def detail(self):
+        return self._detail
+
+    @detail.setter
+    def detail(self, detail):
+        self._detail = detail
+
+    def __str__(self):
+        return '%s: %s' % (self.title, self.detail)
 
 
 __all__ = ['UserGrid', 'UserGridException', '__version__']
