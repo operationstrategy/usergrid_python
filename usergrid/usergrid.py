@@ -8,7 +8,7 @@ import time
 import requests
 
 
-__version__ = '0.1.8'
+__version__ = '0.1.9'
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -649,6 +649,35 @@ class UserGrid(object):
                 key=(key_prefix + key)
             )
 
+    def update_password(self, user_id, old_password, new_password):
+        """
+        Updates a password for a usergrid user
+
+        :param user_id:
+        :param old_password:
+        :param new_password:
+        :return:
+        """
+        response = self._make_request(
+            'PUT',
+            self._get_full_endpoint('/users/' + user_id + '/password'),
+            params={
+                "client_id": self._client_id,
+                "client_secret": self._client_secret
+            },
+            data=json.dumps({
+                "oldpassword": old_password,
+                "newpassword": new_password
+            })
+        )
+
+        if 'error' in response:
+            raise UserGridException(
+                'Updating password failed: ' + response['error']
+            )
+
+        return True
+
     def _add_related_entities(self, entity, endpoint, key):
         """
         Adds entities to the entity from matching endpoint
@@ -660,6 +689,7 @@ class UserGrid(object):
         """
         if key not in entity:
             entity[key] = []
+
         for connecting_entity in self.collect_entities(endpoint):
             entity[key].append(connecting_entity)
 
