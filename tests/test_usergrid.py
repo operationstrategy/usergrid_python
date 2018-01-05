@@ -211,6 +211,7 @@ class TestUserGrid(TestCase):
 
         :return:
         """
+
         def request_match(request):
             return (
                 request.body ==
@@ -238,6 +239,7 @@ class TestUserGrid(TestCase):
 
         :return:
         """
+
         def request_match(request):
             return (
                 request.body ==
@@ -266,6 +268,7 @@ class TestUserGrid(TestCase):
         :param mock:
         :return:
         """
+
         # /users/me/activities
         def request_match(request):
             expected = {
@@ -332,6 +335,7 @@ class TestUserGrid(TestCase):
         :param mock:
         :return:
         """
+
         def request_match(request):
             return request.body is not None
 
@@ -345,7 +349,9 @@ class TestUserGrid(TestCase):
 
         created = self.user_grid.post_file(
             '/users',
-            os.path.dirname(os.path.realpath(__file__)) + '/test_data/Headshot_300_300.jpg'
+            os.path.dirname(
+                os.path.realpath(__file__)
+            ) + '/test_data/Headshot_300_300.jpg'
         )
 
         self.assertEqual(
@@ -361,6 +367,7 @@ class TestUserGrid(TestCase):
         :param mock:
         :return:
         """
+
         def request_match(request):
             if 'client_secret=bar' not in request.body:
                 return False
@@ -393,6 +400,7 @@ class TestUserGrid(TestCase):
         :param mock:
         :return:
         """
+
         def request_match(request):
             if 'grant_type=password' not in request.body:
                 return False
@@ -425,6 +433,7 @@ class TestUserGrid(TestCase):
         :param mock:
         :return:
         """
+
         def request_match(request):
             return (
                 request.body ==
@@ -452,6 +461,7 @@ class TestUserGrid(TestCase):
         :param mock:
         :return:
         """
+
         def request_match(request):
             return (
                 request.body ==
@@ -480,6 +490,7 @@ class TestUserGrid(TestCase):
         :param mock:
         :return:
         """
+
         def request_match(request):
             if 'grant_type=client_credentials' not in request.body:
                 return False
@@ -613,8 +624,13 @@ class TestUserGrid(TestCase):
         )
 
         self.assertEqual(
-            str(expired.exception),
+            expired.exception.detail,
             'Access token has expired'
+        )
+
+        self.assertEqual(
+            expired.exception.title,
+            'expired_token'
         )
 
     def test_it_should_not_reconnect_when_token_set(self, mock):
@@ -671,8 +687,13 @@ class TestUserGrid(TestCase):
         )
 
         self.assertEqual(
-            str(expired.exception),
+            expired.exception.detail,
             'Unable to authenticate due to expired access token'
+        )
+
+        self.assertEqual(
+            expired.exception.title,
+            'expired_token'
         )
 
     def test_it_should_generate_over_all_entities(self, mock):
@@ -930,7 +951,7 @@ class TestUserGrid(TestCase):
         """
 
         self.assertEqual(
-            '0.1.9',
+            '0.1.10',
             __version__
         )
 
@@ -985,6 +1006,42 @@ class TestUserGrid(TestCase):
             )
 
         self.assertEqual(
-            str(update_pass_exception.exception),
+            update_pass_exception.exception.detail,
             'Updating password failed: User not found'
         )
+
+        self.assertEqual(
+            update_pass_exception.exception.title,
+            'password_update_failed'
+        )
+
+    def test_exceptions(self, mock):
+        """
+        Test the title and detail can be accessed from the exception
+
+        :param mock:
+        :return:
+        """
+
+        try:
+            raise UserGridException(
+                title='foo_bar',
+                detail="A foo did not bar"
+            )
+        except UserGridException as test_exception:
+            self.assertEqual(
+                'foo_bar',
+                test_exception.title
+            )
+
+            self.assertEqual(
+                'A foo did not bar',
+                test_exception.detail
+            )
+
+            self.assertEqual(
+                'foo_bar: A foo did not bar',
+                str(test_exception)
+            )
+
+            return
