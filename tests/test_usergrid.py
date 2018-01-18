@@ -436,52 +436,72 @@ class TestUserGrid(TestCase):
 
         def request_match(request):
             return (
-                request.body ==
-                'grant_type=password&password=bar&username=foo&ttl=1500')
+                request.text ==
+                'grant_type=password&username=foo&password=bar')
 
         post_response = read_json_file('password_auth_failed_response.json')
         mock.register_uri(
             "POST",
-            "http://usergrid.com/man/chuck/token",
+            "http://usergrid.com:80/man/chuck/token",
             json=post_response,
             additional_matcher=request_match,
             status_code=400
         )
 
-        with self.assertRaises(Exception) as failed:
+        with self.assertRaises(UserGridException) as failed:
             self.user_grid.login(
                 username='foo',
                 password='bar'
             )
 
-    def test_it_should_fail_login_with_bad_password(self, mock):
+        self.assertEqual(
+            UserGridException.ERROR_LOGIN,
+            failed.exception.title
+        )
+
+        self.assertEqual(
+            'Failed to login to usergrid',
+            failed.exception.detail
+        )
+
+        self.assertEqual(
+            'login_failed: Failed to login to usergrid',
+            str(failed.exception)
+        )
+
+    def test_it_should_fail_login_with_bad_connection(self, mock):
         """
         Ensures UserGrid will fail to login with bad password grant
 
         :param mock:
         :return:
         """
-
-        def request_match(request):
-            return (
-                request.body ==
-                'grant_type=password&password=bar&username=foo&ttl=1500')
-
-        post_response = read_json_file('password_auth_failed_response.json')
         mock.register_uri(
             "POST",
-            "http://usergrid.com/man/chuck/token",
-            json=post_response,
-            additional_matcher=request_match,
-            status_code=400
+            "http://usergrid.com:80/man/chuck/token",
+            status_code=500
         )
 
-        with self.assertRaises(Exception) as failed:
+        with self.assertRaises(UserGridException) as failed:
             self.user_grid.login(
                 username='foo',
-                password='bar',
-                ttl=1500
+                password='bar'
             )
+
+        self.assertEqual(
+            UserGridException.ERROR_GENERAL,
+            failed.exception.title
+        )
+
+        self.assertEqual(
+            'Failed to connect to usergrid',
+            failed.exception.detail
+        )
+
+        self.assertEqual(
+            'usergrid_failure: Failed to connect to usergrid',
+            str(failed.exception)
+        )
 
     def test_it_should_user_client_grant_as_default_login(self, mock):
         """
@@ -951,7 +971,7 @@ class TestUserGrid(TestCase):
         """
 
         self.assertEqual(
-            '0.1.10',
+            '0.1.11',
             __version__
         )
 

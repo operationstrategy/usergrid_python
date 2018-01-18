@@ -7,7 +7,7 @@ import warnings
 import time
 import requests
 
-__version__ = '0.1.10'
+__version__ = '0.1.11'
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -77,6 +77,8 @@ class UserGrid(object):
         self._access_token = None
         self._token_expires = None
         self._default_timeout = kwargs.pop('default_timeout', 20)
+        self._me = None
+        self._last_login_info = None
 
     @property
     def me(self):  # pylint: disable=invalid-name
@@ -89,11 +91,11 @@ class UserGrid(object):
     @property
     def access_token(self):
         """
-        Prevents token from being read
+        Returns the access token
 
         :return:
         """
-        return None
+        return self._access_token
 
     @access_token.setter
     def access_token(self, token):
@@ -174,13 +176,24 @@ class UserGrid(object):
             timeout=20
         )
 
-        login_response.raise_for_status()
-        login_json = login_response.json()
+        try:
+            login_json = login_response.json()
+            if login_response.status_code == 200:
+                self._token_expires = time.time() + int(login_json['expires_in'])
+                self._access_token = login_json['access_token']
+                if user_name:  # Only set if we are password grant
+                    self._me = login_json['user']
 
-        self._token_expires = time.time() + int(login_json['expires_in'])
-        self._access_token = login_json['access_token']
-        if user_name:
-            self._me = login_json['user']
+            if 'error' in login_json and login_json['error'] == 'invalid_grant':
+                raise UserGridException(
+                    title=UserGridException.ERROR_LOGIN,
+                    detail='Failed to login to usergrid'
+                )
+        except Exception as test:
+            raise UserGridException(
+                title=UserGridException.ERROR_GENERAL,
+                detail='Failed to connect to usergrid'
+            )
 
     @property
     def std_headers(self):
@@ -716,6 +729,7 @@ class UserGridException(BaseException):
     ERROR_PASSWORD_FAILED = 'password_update_failed'
     ERROR_EXPIRED_TOKEN = 'expired_token'
     ERROR_GENERAL = 'usergrid_failure'
+    ERROR_LOGIN = 'login_failed'
 
     _title = None
 
