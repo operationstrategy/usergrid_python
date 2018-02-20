@@ -6,6 +6,8 @@ import logging
 import warnings
 import time
 import requests
+from decorators.catch_usergrid_not_found import \
+    catch_usergrid_not_found_exception
 
 __version__ = '0.1.11'
 
@@ -276,6 +278,7 @@ class UserGrid(object):
         for entity in self.collect_entities(endpoint, ql, limit):
             method(entity)
 
+    @catch_usergrid_not_found_exception(return_value_on_exception=([], None))
     def get_entities(self, endpoint, cursor=None, ql=None, limit=None):  # pylint: disable=invalid-name
         """
         Get entities from UG
@@ -325,6 +328,7 @@ class UserGrid(object):
 
         return [entities, cursor]
 
+    @catch_usergrid_not_found_exception(return_value_on_exception=None)
     def get_entity(self, endpoint, ql=None):  # pylint: disable=invalid-name
         """
         Gets one entity from UG
