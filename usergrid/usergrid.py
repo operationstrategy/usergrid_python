@@ -726,6 +726,4 @@ class UserGrid(object):
             entity[key].append(connecting_entity)
 
 
-
-
 __all__ = ['UserGrid', '__version__']

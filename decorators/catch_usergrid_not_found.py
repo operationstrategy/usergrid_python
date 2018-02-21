@@ -16,7 +16,7 @@ def catch_usergrid_not_found_exception(return_value_on_exception=None):
             try:
                 return function(*args, **kwargs)
             except UserGridException as ug_exception:
-                if ug_exception.title == 'Service resource not found':
+                if ug_exception.detail == 'Service resource not found':
                     return return_value_on_exception
                 raise ug_exception
 
