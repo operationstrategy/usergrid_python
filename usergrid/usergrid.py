@@ -6,8 +6,8 @@ import logging
 import warnings
 import time
 import requests
-from decorators.catch_usergrid_not_found import \
-    catch_usergrid_not_found_exception
+from exceptions import UserGridException
+from decorators import catch_usergrid_not_found_exception
 
 __version__ = '0.1.11'
 
@@ -726,41 +726,6 @@ class UserGrid(object):
             entity[key].append(connecting_entity)
 
 
-class UserGridException(BaseException):
-    """
-    Exception class for UG
-    """
-    ERROR_PASSWORD_FAILED = 'password_update_failed'
-    ERROR_EXPIRED_TOKEN = 'expired_token'
-    ERROR_GENERAL = 'usergrid_failure'
-    ERROR_LOGIN = 'login_failed'
-
-    _title = None
-
-    _detail = None
-
-    def __init__(self, title, detail):
-        self.title = title
-        self.detail = detail
-
-    @property
-    def title(self):
-        return self._title
-
-    @title.setter
-    def title(self, title):
-        self._title = title
-
-    @property
-    def detail(self):
-        return self._detail
-
-    @detail.setter
-    def detail(self, detail):
-        self._detail = detail
-
-    def __str__(self):
-        return '%s: %s' % (self.title, self.detail)
 
 
-__all__ = ['UserGrid', 'UserGridException', '__version__']
+__all__ = ['UserGrid', '__version__']

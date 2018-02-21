@@ -1,5 +1,5 @@
-from decorators.catch_usergrid_not_found import *
-from usergrid.usergrid import UserGridException
+from decorators import catch_usergrid_not_found_exception
+from exceptions import UserGridException
 from unittest import TestCase
 
 
