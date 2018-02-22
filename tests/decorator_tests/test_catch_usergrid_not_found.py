@@ -1,5 +1,5 @@
-from decorators import catch_usergrid_not_found_exception
-from exceptions import UserGridException
+from usergrid.decorators import catch_usergrid_not_found_exception
+from usergrid.exceptions import UserGridException
 from unittest import TestCase
 
 
@@ -22,7 +22,7 @@ class CatchUsergridNotFoundExceptionTest(TestCase):
             @catch_usergrid_not_found_exception(return_value_on_exception=None)
             def get_entity(self, endpoint, ql=None):
                 raise UserGridException(title='Service resource not found',
-                                        detail="test")
+                                        detail="Service resource not found")
 
         ug = UsergridTest()
 

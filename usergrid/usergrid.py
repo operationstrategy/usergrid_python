@@ -6,8 +6,8 @@ import logging
 import warnings
 import time
 import requests
-from exceptions import UserGridException
-from decorators import catch_usergrid_not_found_exception
+from usergrid.exceptions import UserGridException
+from usergrid.decorators import catch_usergrid_not_found_exception
 
 __version__ = '0.1.11'
 
