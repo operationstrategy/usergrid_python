@@ -11,6 +11,8 @@ from unittest.mock import Mock
 from unittest.mock import call
 import os
 import json
+import types
+from exceptions import UserGridException
 
 SESSION = requests.Session()
 ADAPTER = requests_mock.Adapter()
@@ -165,9 +167,46 @@ class TestUserGrid(TestCase):
             'UserGrid get_entities did not return connections for an entity'
         )
 
+    def test_it_should_return_empty_generator(self, mock):
+        """
+        Test to return empty generator for collect entities if resource is
+        not found.
+        :param mock:
+        :return:
+        """
+        entities_response = read_json_file('get_entity_not_found_response.json')
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/users",
+            json=entities_response,
+            status_code=404
+        )
+        entities = []
+        self.assertIsInstance(self.user_grid.collect_entities("/users"),
+                              types.GeneratorType)
+        for entity in self.user_grid.collect_entities("/users"):
+            entities.append(entity)
+        self.assertEqual(entities, [])
+
+    def test_get_for_not_found_entity_should_return_none(self, mock):
+        """
+        Test to return None when we try to fetch an entity by id and the
+        resource is not found.
+        :param mock:
+        :return:
+        """
+        entities_response = read_json_file('get_entity_not_found_response.json')
+        mock.register_uri(
+            "GET",
+            "http://usergrid.com:80/man/chuck/users/foo",
+            json=entities_response
+        )
+        entity = self.user_grid.get_entity('/users/foo')
+        self.assertEqual(entity, None)
+
     def test_it_should_not_fetch_entities(self, mock):
         """
-        Ensures an exception is thrown with a bad status code
+        Ensures it returns [],None when resource is not found.
 
         :param mock:
         :return:
@@ -179,9 +218,12 @@ class TestUserGrid(TestCase):
             json=entities_response,
             status_code=404
         )
-
-        with self.assertRaises(UserGridException) as failed:
-            self.user_grid.get_entities('users')
+        entities, actual_cursor = self.user_grid.get_entities(
+            '/users',
+            limit=10
+        )
+        self.assertEqual(entities, [])
+        self.assertEqual(actual_cursor, None)
 
     def test_it_should_delete_entity(self, mock):
         """
@@ -214,8 +256,8 @@ class TestUserGrid(TestCase):
 
         def request_match(request):
             return (
-                request.body ==
-                '{"foo": "bar"}')
+                    request.body ==
+                    '{"foo": "bar"}')
 
         post_response = read_json_file('post_response.json')
         mock.register_uri(
@@ -242,8 +284,8 @@ class TestUserGrid(TestCase):
 
         def request_match(request):
             return (
-                request.body ==
-                '{"foo": "bar"}')
+                    request.body ==
+                    '{"foo": "bar"}')
 
         put_response = read_json_file('put_response.json')
         mock.register_uri(
@@ -436,8 +478,8 @@ class TestUserGrid(TestCase):
 
         def request_match(request):
             return (
-                request.text ==
-                'grant_type=password&username=foo&password=bar')
+                    request.text ==
+                    'grant_type=password&username=foo&password=bar')
 
         post_response = read_json_file('password_auth_failed_response.json')
         mock.register_uri(
@@ -933,36 +975,6 @@ class TestUserGrid(TestCase):
             archived_entity, "Usergrid didn't archive entity"
         )
 
-    def test_it_should_not_archive_entity_when_conneting_entity_not_found(
-            self,
-            mock
-    ):
-        """
-        test to check if it raises exception and not archive entity when
-        connections are not found
-        :param mock:
-        :return:
-        """
-        entities_response = read_json_file('get_presegmented.json')
-        entities_response['entities'][0]['metadata'].pop("connecting", None)
-        mock.register_uri(
-            "GET",
-            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo",
-            json=entities_response
-        )
-        presegmented_has_response_not_found = read_json_file(
-            'get_entity_not_found_response.json'
-        )
-
-        mock.register_uri(
-            "GET",
-            "http://usergrid.com:80/man/chuck/presegmentedaudios/foo/has",
-            json=presegmented_has_response_not_found,
-            status_code=404
-        )
-        with self.assertRaises(UserGridException) as failed:
-            self.user_grid.archive_entity("presegmentedaudios", "foo")
-
     def test_it_should_return_version(self, mock):
         """
         Ensures that the version number can be imported correctly
@@ -980,8 +992,8 @@ class TestUserGrid(TestCase):
 
         def request_match(request):
             return (
-                request.body ==
-                '{"oldpassword": "foo", "newpassword": "bar"}')
+                    request.body ==
+                    '{"oldpassword": "foo", "newpassword": "bar"}')
 
         mock.register_uri(
             "PUT",
@@ -1006,8 +1018,8 @@ class TestUserGrid(TestCase):
 
         def request_match(request):
             return (
-                request.body ==
-                '{"oldpassword": "foo", "newpassword": "bar"}')
+                    request.body ==
+                    '{"oldpassword": "foo", "newpassword": "bar"}')
 
         mock.register_uri(
             "PUT",
