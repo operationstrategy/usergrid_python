@@ -9,7 +9,7 @@ import requests
 from usergrid.exceptions import UserGridException
 from usergrid.decorators import catch_usergrid_not_found_exception
 
-__version__ = '0.1.11'
+__version__ = '0.1.12'
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
