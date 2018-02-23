@@ -12,7 +12,7 @@ from unittest.mock import call
 import os
 import json
 import types
-from exceptions import UserGridException
+from usergrid.exceptions import UserGridException
 
 SESSION = requests.Session()
 ADAPTER = requests_mock.Adapter()

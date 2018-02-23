@@ -1,5 +1,5 @@
 import functools
-from exceptions import UserGridException
+from usergrid.exceptions import UserGridException
 
 
 def catch_usergrid_not_found_exception(return_value_on_exception=None):
