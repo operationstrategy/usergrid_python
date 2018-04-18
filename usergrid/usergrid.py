@@ -258,8 +258,9 @@ class UserGrid(object):
             for entity in page_entities:
                 yield entity
 
-            if cursor is None:
+            if cursor is None or len(page_entities) < limit:
                 break
+
 
     def process_entities(self, endpoint, method, ql=None, limit=None):  # pylint: disable=invalid-name
         """
