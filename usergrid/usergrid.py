@@ -248,7 +248,7 @@ class UserGrid(object):
             limit = 1000
 
         while True:
-            page_entities, next_cursor = self.get_entities(
+            page_entities, cursor = self.get_entities(
                 endpoint,
                 ql=ql,
                 limit=limit,
@@ -258,11 +258,9 @@ class UserGrid(object):
             for entity in page_entities:
                 yield entity
 
-            if next_cursor is None or len(page_entities) < limit:
+            if cursor is None or len(page_entities) < limit:
                 break
 
-            else:
-                cursor = next_cursor
 
     def process_entities(self, endpoint, method, ql=None, limit=None):  # pylint: disable=invalid-name
         """
@@ -320,7 +318,7 @@ class UserGrid(object):
             if 'list' in response:
                 entities = response['list']
 
-            if 'cursor' in response :
+            if 'cursor' in response:
                 cursor = response['cursor']
 
         except requests.HTTPError as request_exception:
