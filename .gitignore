@@ -1,5 +1,6 @@
 *.pyc
 *.bak
+UserGrid.egg-info/
 usergrid/UserGrid.egg-info/
 build/
 dist/
