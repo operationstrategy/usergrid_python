@@ -1,4 +1,4 @@
-# UserGrid1.x Python Library
+# UserGrid 0.1.13 Python Library
 
 This library lets you communicate with a UserGrid1.x server and do the following:
 

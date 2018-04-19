@@ -1,0 +1,10 @@
+README.txt
+setup.py
+UserGrid.egg-info/PKG-INFO
+UserGrid.egg-info/SOURCES.txt
+UserGrid.egg-info/dependency_links.txt
+UserGrid.egg-info/requires.txt
+UserGrid.egg-info/top_level.txt
+usergrid/__init__.py
+usergrid/mock_usergrid.py
+usergrid/usergrid.py
