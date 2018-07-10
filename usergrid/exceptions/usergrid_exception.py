@@ -1,4 +1,4 @@
-class UserGridException(BaseException):
+class UserGridException(Exception):
     """
     Exception class for UG
     """
